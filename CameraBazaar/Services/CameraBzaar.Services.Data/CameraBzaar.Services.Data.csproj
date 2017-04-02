@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BF299AB4-E72B-41D2-A9A4-7E655926C581}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CameraBzaar.Services.Data</RootNamespace>
+    <AssemblyName>CameraBzaar.Services.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CamerasService.cs" />
+    <Compile Include="Contracts\ICamerasService.cs" />
+    <Compile Include="Contracts\IIdentifierProvider.cs" />
+    <Compile Include="Contracts\IService.cs" />
+    <Compile Include="Contracts\IUsersService.cs" />
+    <Compile Include="IdentifierProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsersService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\CamBazaar.Data.Common\CamBazaar.Data.Common.csproj">
+      <Project>{26363440-A030-4743-9B81-FE43F852A3A2}</Project>
+      <Name>CamBazaar.Data.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\CamBazaar.Data.Models\CamBazaar.Data.Models.csproj">
+      <Project>{4CE21F20-5B10-43E9-830F-72E133873DE8}</Project>
+      <Name>CamBazaar.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Web\CameraBazaar.Web.Common\CameraBazaar.Web.Common.csproj">
+      <Project>{759899B3-E52C-466F-97D7-37E6AA0E1994}</Project>
+      <Name>CameraBazaar.Web.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

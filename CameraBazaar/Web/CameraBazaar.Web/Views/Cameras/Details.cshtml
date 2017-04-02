@@ -1,0 +1,59 @@
+﻿@model CameraBazaar.Web.ViewModels.Cameras.CameraDetailsViewModel
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div class="col-md-8 col-md-offset-4">
+    <h4>
+        <p>@Html.DisplayFor(m => m.Make) @Html.DisplayFor(m => m.Model) - @Html.DisplayFor(m => m.IsInStock)</p>
+    </h4>
+
+    <p>@Html.ActionLink($"{@Model.Owner.UserName}", "UserProfile", "Users", new { id = @Model.Owner.Id }, null)</p>
+
+    <img src="@Model.ImageUrl" alt="image" />
+    <div class="form-group">
+        @Html.LabelFor(m => m.IsFullFrame, new { @class = "control-label" }) :
+        <span>@(Model.IsFullFrame ? "Yes" : "No")</span>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.MinShutterSpeed, new { @class = "control-label" }) :
+        @Html.DisplayFor(m => m.MinShutterSpeed)"
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.MaxShutterSpeed, new { @class = "control-label" }) :
+        @Html.DisplayFor(m => m.MaxShutterSpeed)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.MinIso, new { @class = "control-label" }) :
+        @Html.DisplayFor(m => m.MinIso)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.MaxIso, new { @class = "control-label" }) :
+        @Html.DisplayFor(m => m.MaxIso)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.VideoResolution, new { @class = "control-label" }) :
+        @Html.DisplayFor(m => m.VideoResolution)p
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.LightMeterings, new { @class = "control-label" }) :
+        @foreach (var type in @Model.LightMeterings)
+            {
+            <p>- @type.LightMeteringType</p>
+        }
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Description, new { @class = "control-label" }) :
+        @Html.DisplayTextFor(m => m.Description)
+    </div>
+</div>
+<div class="row"></div>

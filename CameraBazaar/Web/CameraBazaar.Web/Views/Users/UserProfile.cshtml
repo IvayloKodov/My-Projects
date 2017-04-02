@@ -1,0 +1,49 @@
+﻿@model CameraBazaar.Web.ViewModels.Users.UserProfileViewModel
+
+@{
+    ViewBag.Title = "Profile Details";
+}
+<style>
+    .control-label {
+        text-align: right;
+    }
+</style>
+
+<h2>@Model.Username</h2>
+
+<div class="col-md-offset-2 col-md-10">
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" }):
+        <span><a href="">@Model.Email</a></span>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" }):
+        <span>@Model.PhoneNumber</span>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Cameras, new { @class = "col-md-2 control-label" }):
+        <span>@Model.CamerasInStock in stock / @Model.CamerasOutOfStock out of stock</span>
+
+        <h3>@Html.LabelFor(m => m.Cameras): </h3>
+    </div>
+
+
+    @{ int count = 0;}
+    <div class="row">
+        @foreach (var cam in @Model.Cameras)
+        {
+            Html.RenderPartial("~/Views/Cameras/_CameraOverview.cshtml", cam);
+
+            if (++count % 3 == 0)
+            {
+                @:</div>
+                @:<div class="row">
+            }
+        }
+    </div>
+    <br />
+</div>
+

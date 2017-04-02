@@ -1,0 +1,15 @@
+﻿@model CameraBazaar.Web.ViewModels.Cameras.CameraViewModel
+
+<div class="col-sm-4">
+    <div class="img-thumbnail">
+        <img class="img-responsive" src="@Model.ImageUrl" alt="camera" />
+        <div class="caption">
+            <h2>@Model.Make<span> @Model.Model</span></h2>
+            <p><strong>$</strong>@($"{Model.Price:f2}")</p>
+            <p>
+                @Html.DisplayFor(m => Model.IsInStock)
+            </p>
+            @Html.ActionLink("Details", "Details", "Cameras", new { id = Model.Id }, null)
+        </div>
+    </div>
+</div>

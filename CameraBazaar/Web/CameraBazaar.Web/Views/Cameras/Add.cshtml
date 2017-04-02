@@ -1,0 +1,126 @@
+﻿@using System.Web.Mvc.Html
+@model CameraBazaar.Web.ViewModels.Cameras.CameraDetailsViewModel
+@{
+    ViewBag.Title = "Add Camera";
+}
+
+<h2>Create Camera</h2>
+
+@using (Html.BeginForm("Add", "Cameras", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <h4>Create a new camera.</h4>
+
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Make, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.EnumDropDownListFor(m => m.Make, "Make", new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Model, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Model, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Price, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Quantity, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.MinShutterSpeed, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.MinShutterSpeed, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.MaxShutterSpeed, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.MaxShutterSpeed, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.MinIso, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.MinIso, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.MaxIso, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.MaxIso, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.IsFullFrame, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+
+            @Html.RadioButtonFor(m => m.IsFullFrame, true)
+            <label for="IsFullFrame">Yes</label>
+
+            @Html.RadioButtonFor(m => m.IsFullFrame, false, new { @checked = "checked" })
+            <label for="IsFullFrame">No</label>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.VideoResolution, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.VideoResolution, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.LightMeterings, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            <label for="spot">Spot</label>
+            <input id="spot" type="checkbox" name="LightMeterings[0].LightMeteringType" value="0" />
+
+            <label for="center">Center-Weighted</label>
+            <input id="center" type="checkbox" name="LightMeterings[1].LightMeteringType" value="1" />
+
+            <label for="evaluative">Evaluative</label>
+            <input id="evaluative" type="checkbox" name="LightMeterings[2].LightMeteringType" value="2" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ImageUrl, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.ImageUrl, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-primary" value="Add" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

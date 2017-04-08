@@ -1,0 +1,9 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Administrator Area</h2>
+
+@Html.ActionLink("Create Course", "Add", "Courses", new { area = "Blog" }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Manage Roles", "ManageRoles", "Admin", new { area = "Admin" }, new { @class = "btn btn-primary" })

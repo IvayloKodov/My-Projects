@@ -1,16 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace LearningSystem.Web.Controllers
 {
+    using System.Linq;
+    using Common.Mappings.Extensions;
+    using Models.ViewModels.Courses;
+    using Services.Data.Contracts;
+
     public class HomeController : Controller
     {
+        private readonly ICoursesService courses;
+
+        public HomeController(ICoursesService courses)
+        {
+            this.courses = courses;
+        }
+
         public ActionResult Index()
         {
-            return View();
+            var allCourses = this.courses.GetAllCourses()
+                                 .OrderByDescending(c => c.EndDate)
+                                 .To<CourseViewModel>()
+                                 .ToList();
+
+            return this.View(allCourses);
         }
 
         public ActionResult About()

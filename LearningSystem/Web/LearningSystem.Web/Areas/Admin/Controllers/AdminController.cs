@@ -3,6 +3,8 @@
 namespace LearningSystem.Web.Areas.Admin.Controllers
 {
     using Common.Mappings.Extensions;
+    using Common.RoleConstans;
+    using Microsoft.AspNet.Identity;
     using Models.ViewModels.Users;
     using Services.Data.Contracts;
     using Web.Controllers.Contracts;
@@ -12,11 +14,20 @@ namespace LearningSystem.Web.Areas.Admin.Controllers
     {
         private readonly IAdminService admin;
         private readonly IUsersService users;
+        private readonly IStudentsService students;
+        private readonly ApplicationUserManager _userManager;
 
-        public AdminController(IAdminService admin, IUsersService users)
+
+        public AdminController(ApplicationUserManager userManager)
+        {
+            this._userManager = userManager;
+        }
+
+        public AdminController(IAdminService admin, IUsersService users, IStudentsService students)
         {
             this.admin = admin;
             this.users = users;
+            this.students = students;
         }
 
         [HttpGet]

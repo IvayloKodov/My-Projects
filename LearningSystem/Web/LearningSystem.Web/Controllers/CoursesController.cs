@@ -1,22 +1,24 @@
-﻿using System.Web.Mvc;
-
-namespace LearningSystem.Web.Areas.Blog.Controllers
+﻿namespace LearningSystem.Web.Controllers
 {
-    using Data.Models;
-    using Services.Data.Contracts;
-    using Web.Controllers.Contracts;
     using System.Linq;
+    using System.Web.Mvc;
+    using Contracts;
+    using Data.Models;
+    using Microsoft.AspNet.Identity;
     using Models.ViewModels.Courses;
+    using Services.Data.Contracts;
 
     public class CoursesController : BaseController
     {
         private readonly ICoursesService courses;
         private readonly IUsersService users;
+        private readonly IStudentsService students;
 
-        public CoursesController(ICoursesService courses, IUsersService users)
+        public CoursesController(ICoursesService courses, IUsersService users, IStudentsService students)
         {
             this.courses = courses;
             this.users = users;
+            this.students = students;
         }
 
         // GET: Blog/Courses
@@ -48,6 +50,17 @@ namespace LearningSystem.Web.Areas.Blog.Controllers
             }
 
             return this.View(courseVm);
+        }
+
+        [Authorize]
+        public ActionResult Enroll(int courseid)
+        {
+            var currentStudentId = this.User.Identity.GetUserId();
+            var student = this.students.GetStudentById(currentStudentId);
+
+            this.courses.EnrollStudentInCourse(student, courseid);
+
+            return this.RedirectToAction("Index", "Home", new { Area = "" });
         }
     }
 }

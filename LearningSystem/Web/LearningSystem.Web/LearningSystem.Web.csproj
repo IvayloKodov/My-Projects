@@ -169,7 +169,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Blog\BlogAreaRegistration.cs" />
-    <Compile Include="Areas\Blog\Controllers\CoursesController.cs" />
+    <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Contracts\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -194,7 +194,7 @@
     <Content Include="Areas\Blog\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
-    <Content Include="Areas\Blog\Views\Courses\Add.cshtml" />
+    <Content Include="Views\Courses\Add.cshtml" />
     <Content Include="Areas\Blog\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\ManageRoles.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Edit.cshtml" />
@@ -283,6 +283,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Blog\Controllers\" />
     <Folder Include="Areas\Blog\Views\Shared\" />
   </ItemGroup>
   <PropertyGroup>

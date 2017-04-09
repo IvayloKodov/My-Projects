@@ -1,29 +1,43 @@
-﻿@model IList<LearningSystem.Web.Models.ViewModels.Courses.CreateCourseViewModel>
+﻿@model IList<LearningSystem.Web.Models.ViewModels.Courses.CourseViewModel>
 @{
     ViewBag.Title = "Home Page";
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>Learning System</h1>
+    <p class="lead">Get your future by learning something interesting and usefully!</p>
+    <p>See out latest courses below!</p>
 </div>
 
+<h3>Latest Courses: </h3>
 <div class="row">
-    <div class="col-md-4">
-    <h2>All Courses</h2>
-    @for (int i = 1; i <= @Model.Count(); i++)
-    {
-        var course = @Model[i - 1];
-        <div class="col-sm-4">
-            <p>Course Name: @course.Name</p>
-            <p>Trainer: @course.Trainers</p>
-        </div>
-        if (i % 3 == 0)
+        <h2>All Courses</h2>
+        @for (int i = 1; i <= @Model.Count(); i++)
         {
-            @:</div>
-            @:<div class="row">
+            var course = @Model[i - 1];
+            <div class="col-sm-4">
+                @Html.DisplayNameFor(m => course.Name):
+                @Html.DisplayFor(m=> course.Name)
+                <br />
+                @Html.DisplayNameFor(m => course.Trainer.Name):
+                @Html.DisplayFor(m => course.Trainer.Name)
+                <br />
+                
+                @Html.DisplayNameFor(m => course.StartDate):
+                @Html.DisplayFor(m => course.StartDate)
+                <br />
+                
+                @Html.DisplayNameFor(m => course.EndDate):
+                @Html.DisplayFor(m => course.EndDate)
+                <br />
+
+                <p>Students: @course.CourseCurrentStudents / @course.MaxPossibleStudents</p>
+                @Html.ActionLink("Enroll","Enroll","Courses",new {Area="" ,courseId=course.Id},new {@class="btn btn-primary"})
+            </div>
+            if (i % 3 == 0)
+            {
+                @:</div>
+                @:<div class="row">
+            }
         }
-    }
-    </div>
 </div>

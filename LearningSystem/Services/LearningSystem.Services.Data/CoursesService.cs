@@ -1,5 +1,6 @@
 ﻿namespace LearningSystem.Services.Data
 {
+    using System;
     using System.Linq;
     using Contracts;
     using LearningSystem.Data.Common.Repositories;
@@ -22,6 +23,17 @@
         public void AddCourse(Course newCourse)
         {
             this.courses.Add(newCourse);
+            this.courses.SaveChanges();
+        }
+
+        public void EnrollStudentInCourse(Student student, int courseid)
+        {
+            if (student == null)
+            {
+                throw new InvalidOperationException("Student cannot be null");
+            }
+
+            this.courses.GetById(courseid).Students.Add(student);
             this.courses.SaveChanges();
         }
     }

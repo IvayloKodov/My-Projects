@@ -8,5 +8,7 @@
         IQueryable<Course> GetAllCourses();
 
         void AddCourse(Course newCourse);
+
+        void EnrollStudentInCourse(Student student, int courseid);
     }
 }

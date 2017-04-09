@@ -10,14 +10,17 @@
     using Common.RoleConstans;
     using Data.Models;
     using Models.ViewModels.Account;
+    using Services.Data.Contracts;
 
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private readonly IStudentsService students;
 
-        public AccountController()
+        public AccountController(IStudentsService students)
         {
+            this.students = students;
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -152,16 +155,21 @@
         {
             if (ModelState.IsValid)
             {
-                var user = new Student() { UserName = model.Username,
-                                      Email = model.Email,
-                                      Name = model.Name,
-                                      Birthdate = model.Birthdate};
-                var result = await UserManager.CreateAsync(user, model.Password);
+                var user = new User()
+                {
+                    UserName = model.Username,
+                    Email = model.Email,
+                    Name = model.Name,
+                    Birthdate = model.Birthdate
+                };
+
+                var result = await this.UserManager.CreateAsync(user, model.Password);
+
                 if (result.Succeeded)
                 {
                     this.UserManager.AddToRole(user.Id, RoleType.Student.ToString());
-
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    this.students.Create(user.Id);
+                    await this.SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
@@ -169,9 +177,9 @@
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return this.RedirectToAction("Index", "Home");
                 }
-                AddErrors(result);
+                this.AddErrors(result);
             }
 
             // If we got this far, something failed, redisplay form

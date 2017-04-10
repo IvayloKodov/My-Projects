@@ -1,6 +1,5 @@
 ﻿namespace LearningSystem.Services.Data
 {
-    using System;
     using System.Linq;
     using Contracts;
     using LearningSystem.Data.Common.Repositories;
@@ -30,10 +29,17 @@
         {
             if (student == null)
             {
-                throw new InvalidOperationException("Student cannot be null");
+                return;
             }
 
-            this.courses.GetById(courseid).Students.Add(student);
+            var course = this.courses.GetById(courseid);
+
+            if (course == null || course.MaxStudents + 1 > course.MaxStudents)
+            {
+                return;
+            }
+
+            course.Students.Add(student);
             this.courses.SaveChanges();
         }
     }

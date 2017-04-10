@@ -68,6 +68,7 @@
             {
                 this.students.Delete(studentDb.Id);
             }
+            this.users.SaveChanges();
         }
 
         public void DeleteUserById(int id)

@@ -6,11 +6,13 @@
 
     public class Course
     {
+        private const int MaxStudentsCount = 100;
         private ICollection<Student> students;
 
         public Course()
         {
             this.students = new HashSet<Student>();
+            this.MaxStudents = MaxStudentsCount;
         }
 
         [Key]

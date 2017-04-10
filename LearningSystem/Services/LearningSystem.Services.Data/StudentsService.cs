@@ -16,7 +16,9 @@
 
         public Student GetStudentById(string userId)
         {
-            return this.students.All().FirstOrDefault(s=>s.UserId==userId);
+            return this.students
+                        .All()
+                        .FirstOrDefault(s => s.UserId == userId);
         }
 
         public void Delete(int studentId)
@@ -29,6 +31,7 @@
         {
             var student = new Student() { UserId = userId };
             this.students.Add(student);
+
             this.students.SaveChanges();
         }
     }

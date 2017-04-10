@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AuthorsService.cs" />
     <Compile Include="Contracts\IAuthorService.cs" />
+    <Compile Include="Contracts\IService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

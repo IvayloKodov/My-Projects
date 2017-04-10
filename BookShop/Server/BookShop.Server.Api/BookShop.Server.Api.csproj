@@ -53,6 +53,18 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Conventions, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Ninject.Extensions.Conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Ninject.Web.Common.3.2.3.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -180,6 +192,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\NinjectConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -280,6 +293,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Data\BookShop.Data.Common\BookShop.Data.Common.csproj">
+      <Project>{577DB665-C04A-4D16-A933-7E0FD957A401}</Project>
+      <Name>BookShop.Data.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Data\BookShop.Data.Models\BookShop.Data.Models.csproj">
       <Project>{B9C8E7FF-E5B8-4F50-B438-62DE610BE617}</Project>
       <Name>BookShop.Data.Models</Name>
@@ -287,6 +304,14 @@
     <ProjectReference Include="..\..\Data\BookShop.Data\BookShop.Data.csproj">
       <Project>{C8B8BE3B-87E7-4E33-871A-7AF1204889E6}</Project>
       <Name>BookShop.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\BookShop.Services.Data\BookShop.Services.Data.csproj">
+      <Project>{4C7AF9A8-83F0-45DC-BA54-522CF9C05761}</Project>
+      <Name>BookShop.Services.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BookShop.Server.Common\BookShop.Server.Common.csproj">
+      <Project>{B8BF8955-B184-43B8-A881-AB4284682183}</Project>
+      <Name>BookShop.Server.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

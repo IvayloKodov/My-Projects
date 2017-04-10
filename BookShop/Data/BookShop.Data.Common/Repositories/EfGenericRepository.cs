@@ -1,6 +1,8 @@
 ﻿namespace BookShop.Data.Common.Repositories
 {
+    using System;
     using System.Data.Entity;
+    using System.Linq;
 
     public class EfGenericRepository<T> : IRepository<T> where T : class
     {

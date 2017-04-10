@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookShop.Server.Api", "Serv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookShop.Server.Common", "Server\BookShop.Server.Common\BookShop.Server.Common.csproj", "{B8BF8955-B184-43B8-A881-AB4284682183}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookShop.Services.Data", "Services\BookShop.Services.Data\BookShop.Services.Data.csproj", "{4C7AF9A8-83F0-45DC-BA54-522CF9C05761}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookShop.Data.Common", "Data\BookShop.Data.Common\BookShop.Data.Common.csproj", "{577DB665-C04A-4D16-A933-7E0FD957A401}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{B8BF8955-B184-43B8-A881-AB4284682183}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8BF8955-B184-43B8-A881-AB4284682183}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8BF8955-B184-43B8-A881-AB4284682183}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C7AF9A8-83F0-45DC-BA54-522CF9C05761}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C7AF9A8-83F0-45DC-BA54-522CF9C05761}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C7AF9A8-83F0-45DC-BA54-522CF9C05761}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C7AF9A8-83F0-45DC-BA54-522CF9C05761}.Release|Any CPU.Build.0 = Release|Any CPU
+		{577DB665-C04A-4D16-A933-7E0FD957A401}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{577DB665-C04A-4D16-A933-7E0FD957A401}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{577DB665-C04A-4D16-A933-7E0FD957A401}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{577DB665-C04A-4D16-A933-7E0FD957A401}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,5 +60,7 @@ Global
 		{C8B8BE3B-87E7-4E33-871A-7AF1204889E6} = {ECA5FF1B-751D-4318-908C-376A8104EFB4}
 		{B9FEACF7-6008-456C-A26A-A1D7F8065E51} = {401021F0-319C-48E9-A883-26ED1E1000EF}
 		{B8BF8955-B184-43B8-A881-AB4284682183} = {401021F0-319C-48E9-A883-26ED1E1000EF}
+		{4C7AF9A8-83F0-45DC-BA54-522CF9C05761} = {2578553D-EA3B-4DBE-8EA1-ECBB20C89F2B}
+		{577DB665-C04A-4D16-A933-7E0FD957A401} = {ECA5FF1B-751D-4318-908C-376A8104EFB4}
 	EndGlobalSection
 EndGlobal

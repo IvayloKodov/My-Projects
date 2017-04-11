@@ -13,7 +13,6 @@ namespace BookShop.Server.Api
     {
         protected void Application_Start()
         {
-            NinjectConfig.CreateKernel();
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

@@ -1,6 +1,8 @@
 ﻿namespace BookShop.Services.Data
 {
-    public class AuthorsService
+    using Contracts;
+
+    public class AuthorsService : IAuthorsService
     {
     }
 }

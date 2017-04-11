@@ -8,7 +8,7 @@ namespace BookShop.Data.Migrations
     using Models;
     using Server.Common.Enums;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<BookShopContext>
+    public sealed class Configuration : DbMigrationsConfiguration<BookShopContext>
     {
         public Configuration()
         {

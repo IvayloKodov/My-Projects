@@ -5,7 +5,9 @@ using Owin;
 
 namespace BookShop.Server.Api
 {
+    using System.Reflection;
     using System.Web.Http;
+    using Common.Mappings;
     using Ninject.Web.Common.OwinHost;
     using Ninject.Web.WebApi.OwinHost;
 
@@ -24,6 +26,10 @@ namespace BookShop.Server.Api
             app
                .UseNinjectMiddleware(NinjectConfig.CreateKernel)
                .UseNinjectWebApi(httpConfig);
+
+
+            AutoMapperConfig automapper = new AutoMapperConfig();
+            automapper.Execute(Assembly.GetExecutingAssembly());
         }
     }
 }

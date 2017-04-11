@@ -41,9 +41,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthorsService.cs" />
+    <Compile Include="BaseService{T}.cs" />
     <Compile Include="Contracts\IAuthorsService.cs" />
+    <Compile Include="Contracts\IBaseService.cs" />
     <Compile Include="Contracts\IService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\BookShop.Data.Common\BookShop.Data.Common.csproj">
+      <Project>{577DB665-C04A-4D16-A933-7E0FD957A401}</Project>
+      <Name>BookShop.Data.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\BookShop.Data.Models\BookShop.Data.Models.csproj">
+      <Project>{B9C8E7FF-E5B8-4F50-B438-62DE610BE617}</Project>
+      <Name>BookShop.Data.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

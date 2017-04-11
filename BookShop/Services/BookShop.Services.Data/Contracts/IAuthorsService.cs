@@ -1,6 +1,8 @@
 ﻿namespace BookShop.Services.Data.Contracts
 {
-    public interface IAuthorsService
+    using BookShop.Data.Models;
+
+    public interface IAuthorsService : IBaseService<Author>
     {
 
     }

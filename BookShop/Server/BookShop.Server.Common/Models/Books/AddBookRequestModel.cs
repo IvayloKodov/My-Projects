@@ -1,12 +1,10 @@
-﻿namespace BookShop.Server.Api.Models.Books
+﻿namespace BookShop.Server.Common.Models.Books
 {
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Linq;
     using AutoMapper;
-    using Common.Mappings.Contracts;
     using Data.Models;
     using Data.Models.Enums;
+    using Mappings.Contracts;
 
     public class AddBookRequestModel : IMapFrom<Book>, IHaveCustomMappings
     {
@@ -24,16 +22,15 @@
 
         public EditionType Edition { get; set; }
 
+        public int AuthorId { get; set; }
+
         public string CategoriesNames { get; set; }
 
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
-            List<Category> categoriesEntities = null;
-
-            configuration.CreateMap<AddBookRequestModel, Book>()
-                .ForMember(b => b.Categories,
-                opts => opts.MapFrom(bm => bm.CategoriesNames.Split(' ')
-                                            .Select(b => categoriesEntities.FirstOrDefault(c => c.Name == b))));
+            configuration.CreateMap<Book, AddBookRequestModel>()
+                .ForMember(b => b.CategoriesNames, opts => opts.Ignore())
+                .ReverseMap();
         }
     }
 }

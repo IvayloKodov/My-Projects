@@ -4,10 +4,10 @@
     using System.Net;
     using System.Web.Http;
     using Common.Mappings.Extensions;
+    using Common.Models.Authors;
+    using Common.Models.Books;
     using Contracts;
     using Data.Models;
-    using Models.Authors;
-    using Models.Books;
     using Services.Data.Contracts;
 
     [RoutePrefix("api/authors")]

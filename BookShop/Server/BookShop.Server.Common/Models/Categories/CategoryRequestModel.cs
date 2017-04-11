@@ -2,19 +2,19 @@
 {
     using System.ComponentModel.DataAnnotations;
     using AutoMapper;
+    using Constants;
     using Data.Models;
     using Mappings.Contracts;
 
     public class CategoryRequestModel : IMapFrom<Category>, IHaveCustomMappings
     {
-        [StringLength(50, MinimumLength = 4)]
+        [StringLength(GlobalConstants.CategoryNameMaxLength, 
+        MinimumLength = GlobalConstants.CategoryNameMinLength)]
         public string Name { get; set; }
 
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
-            configuration.CreateMap<Category, CategoryRequestModel>()
-                .ForMember(c => c.Name, opts => opts.MapFrom(cm => cm.Name))
-                .ReverseMap();
+            configuration.CreateMap<CategoryRequestModel, Category>();
         }
     }
 }

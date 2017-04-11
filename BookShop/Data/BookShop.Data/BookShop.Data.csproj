@@ -60,10 +60,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Server\BookShop.Server.Common\BookShop.Server.Common.csproj">
-      <Project>{B8BF8955-B184-43B8-A881-AB4284682183}</Project>
-      <Name>BookShop.Server.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BookShop.Data.Models\BookShop.Data.Models.csproj">
       <Project>{B9C8E7FF-E5B8-4F50-B438-62DE610BE617}</Project>
       <Name>BookShop.Data.Models</Name>

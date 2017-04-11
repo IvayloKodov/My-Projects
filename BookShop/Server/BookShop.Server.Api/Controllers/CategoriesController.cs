@@ -6,7 +6,6 @@
     using Common.Models.Categories;
     using Contracts;
     using Data.Models;
-    using Models.Categories;
     using Services.Data.Contracts;
 
     [RoutePrefix("api/categories")]
@@ -96,19 +95,19 @@
         [HttpPost]
         [Authorize]
         [Route]
-        public IHttpActionResult Add(CategoryRequestModel model)
+        public IHttpActionResult Add(CategoryRequestModel categoryModel)
         {
             if (!this.ModelState.IsValid)
             {
                 return this.BadRequest(this.ModelState);
             }
 
-            if (this.categories.GetAll().Any(c => c.Name == model.Name))
+            if (this.categories.GetAll().Any(c => c.Name == categoryModel.Name))
             {
                 return this.BadRequest("There is a category with this name!");
             }
 
-            var category = this.Mapper.Map<Category>(model);
+            var category = new Category {Name = categoryModel.Name};
             this.categories.Add(category);
             this.categories.Save();
 

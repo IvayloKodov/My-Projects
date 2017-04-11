@@ -1,17 +1,17 @@
-using System;
-using System.Globalization;
-using System.Linq;
-using System.Reflection;
-using System.Web.Http.Controllers;
-using System.Web.Http.Description;
-using BookShop.Server.Api.Areas.HelpPage.ModelDescriptions;
-using System.Xml.XPath;
-
 namespace BookShop.Server.Api.Areas.HelpPage
 {
+    using System;
+    using System.Globalization;
+    using System.Linq;
+    using System.Reflection;
+    using System.Web.Http.Controllers;
+    using System.Web.Http.Description;
+    using System.Xml.XPath;
+    using ModelDescriptions;
     /// <summary>
     /// A custom <see cref="IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
     /// </summary>
+    /// 
     public class XmlDocumentationProvider : IDocumentationProvider, IModelDocumentationProvider
     {
         private XPathNavigator _documentNavigator;

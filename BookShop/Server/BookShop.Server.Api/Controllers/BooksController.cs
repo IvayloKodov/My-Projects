@@ -4,9 +4,9 @@
     using System.Web.Http;
     using Common.Constants;
     using Common.Mappings.Extensions;
+    using Common.Models.Books;
     using Contracts;
     using Data.Models;
-    using Models.Books;
     using Services.Data.Contracts;
 
     [RoutePrefix("api/books")]
@@ -90,26 +90,33 @@
             return this.Ok();
         }
 
-        //TODO
-        //[HttpPost]
-        //[Authorize]
-        //[Route]
-        //public IHttpActionResult Add(AddBookRequestModel model)
-        //{
-        //    if (model == null || !this.ModelState.IsValid)
-        //    {
-        //        if (model == null)
-        //        {
-        //            return this.BadRequest("Model cannot be null!");
-        //        }
-        //        return this.BadRequest(this.ModelState);
-        //    }
-        //    var categoriesDb = this.categories.GetAll().ToList();
-        //    var book = 
-        //    this.books.Add(book);
-        //    this.books.Save();
+        [HttpPost]
+        [Authorize]
+        [Route]
+        public IHttpActionResult Add(AddBookRequestModel model)
+        {
+            if (model == null || !this.ModelState.IsValid)
+            {
+                if (model == null)
+                {
+                    return this.BadRequest("Model cannot be null!");
+                }
+                return this.BadRequest(this.ModelState);
+            }
+            
+            var categoryNames = model.CategoriesNames.Split(' ').Select(c => c.Trim());
+            var categoriesDb = this.categories
+                                    .GetAll()
+                                    .Where(c => categoryNames.Contains(c.Name))
+                                    .ToList();
 
-        //    return this.Created("", book);
-        //}
+            var book = this.Mapper.Map<Book>(model);
+            book.Categories = categoriesDb;
+
+            this.books.Add(book);
+            this.books.Save();
+
+            return this.Created("", book);
+        }
     }
 }

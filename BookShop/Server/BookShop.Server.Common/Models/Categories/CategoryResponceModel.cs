@@ -1,7 +1,7 @@
-﻿namespace BookShop.Server.Api.Models.Categories
+﻿namespace BookShop.Server.Common.Models.Categories
 {
-    using Common.Mappings.Contracts;
     using Data.Models;
+    using Mappings.Contracts;
 
     public class CategoryResponceModel : IMapFrom<Category>
     {

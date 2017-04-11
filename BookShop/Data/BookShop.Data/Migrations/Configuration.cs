@@ -6,7 +6,7 @@ namespace BookShop.Data.Migrations
     using System.IO;
     using System.Linq;
     using Models;
-    using Server.Common.Enums;
+    using Models.Enums;
 
     public sealed class Configuration : DbMigrationsConfiguration<BookShopContext>
     {

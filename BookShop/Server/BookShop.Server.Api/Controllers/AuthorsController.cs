@@ -3,7 +3,6 @@
     using System.Linq;
     using System.Net;
     using System.Web.Http;
-    using AutoMapper.QueryableExtensions;
     using Common.Mappings.Extensions;
     using Contracts;
     using Data.Models;

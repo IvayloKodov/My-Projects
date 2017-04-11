@@ -15,7 +15,7 @@
         [Key]
         public int Id { get; set; }
 
-        [StringLength(50)]
+        [StringLength(50, MinimumLength = 4)]
         public string Name { get; set; }
 
         public virtual ICollection<Book> Books

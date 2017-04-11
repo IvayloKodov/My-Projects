@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using Server.Common.Enums;
+    using Enums;
 
     public class Book
     {

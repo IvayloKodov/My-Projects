@@ -12,8 +12,8 @@
 
         T GetById(object id);
 
-        void Save();
-
         void Dispose();
+
+        void Save();
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace BookShop.Server.Common.Enums
+﻿namespace BookShop.Data.Models.Enums
 {
     public enum EditionType
     {

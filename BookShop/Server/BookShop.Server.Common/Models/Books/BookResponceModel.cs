@@ -1,11 +1,11 @@
-﻿namespace BookShop.Server.Api.Models.Books
+﻿namespace BookShop.Server.Common.Models.Books
 {
     using System.Collections.Generic;
     using System.Linq;
     using AutoMapper;
-    using Common.Mappings.Contracts;
     using Data.Models;
     using Data.Models.Enums;
+    using Mappings.Contracts;
 
     public class BookResponceModel : IMapFrom<Book>, IHaveCustomMappings
     {

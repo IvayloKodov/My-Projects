@@ -34,19 +34,33 @@
       <HintPath>..\..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enums\EditionType.cs" />
+    <Compile Include="Constants\GlobalConstants.cs" />
     <Compile Include="Mappings\AutoMapperConfig.cs" />
     <Compile Include="Mappings\Contracts\IHaveCustomMappings.cs" />
     <Compile Include="Mappings\Contracts\IMapFrom.cs" />
     <Compile Include="Mappings\Extensions\QueryableExtensions.cs" />
+    <Compile Include="Models\Authors\AuthorRequestModel.cs" />
+    <Compile Include="Models\Authors\AuthorResponceModel.cs" />
+    <Compile Include="Models\Books\BookResponceModel.cs" />
+    <Compile Include="Models\Books\EditBookRequestModel.cs" />
+    <Compile Include="Models\Books\SearchBookResponceModel.cs" />
+    <Compile Include="Models\Categories\CategoryRequestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\BookShop.Data.Models\BookShop.Data.Models.csproj">
+      <Project>{B9C8E7FF-E5B8-4F50-B438-62DE610BE617}</Project>
+      <Name>BookShop.Data.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

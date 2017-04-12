@@ -8,6 +8,7 @@ namespace BookShop.Server.Api
     using System.Reflection;
     using System.Web.Http;
     using Common.Mappings;
+    using Common.Models;
     using Ninject.Web.Common.OwinHost;
     using Ninject.Web.WebApi.OwinHost;
 
@@ -29,7 +30,7 @@ namespace BookShop.Server.Api
 
 
             AutoMapperConfig automapper = new AutoMapperConfig();
-            automapper.Execute(Assembly.GetExecutingAssembly());
+            automapper.Execute(typeof(IMapping).Assembly);
         }
     }
 }

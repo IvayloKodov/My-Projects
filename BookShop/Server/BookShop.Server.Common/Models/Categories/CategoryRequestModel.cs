@@ -8,13 +8,13 @@
 
     public class CategoryRequestModel : IMapFrom<Category>, IHaveCustomMappings
     {
-        [StringLength(GlobalConstants.CategoryNameMaxLength, 
+        [StringLength(GlobalConstants.CategoryNameMaxLength,
         MinimumLength = GlobalConstants.CategoryNameMinLength)]
         public string Name { get; set; }
 
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
-            configuration.CreateMap<CategoryRequestModel, Category>();
+            configuration.CreateMap<Category, CategoryRequestModel>().ReverseMap();
         }
     }
 }

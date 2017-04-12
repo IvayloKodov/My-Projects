@@ -106,8 +106,8 @@
             {
                 return this.BadRequest("There is a category with this name!");
             }
-
-            var category = new Category {Name = categoryModel.Name};
+            
+            var category = this.Mapper.Map<Category>(categoryModel);
             this.categories.Add(category);
             this.categories.Save();
 

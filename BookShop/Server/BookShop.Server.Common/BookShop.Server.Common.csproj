@@ -53,6 +53,7 @@
     <Compile Include="Models\Books\SearchBookResponceModel.cs" />
     <Compile Include="Models\Categories\CategoryRequestModel.cs" />
     <Compile Include="Models\Categories\CategoryResponceModel.cs" />
+    <Compile Include="Models\IMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

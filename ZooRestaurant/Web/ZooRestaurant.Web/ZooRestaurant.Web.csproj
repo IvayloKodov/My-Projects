@@ -183,8 +183,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -252,6 +250,10 @@
     <ProjectReference Include="..\..\Data\ZooRestaurant.Data\ZooRestaurant.Data.csproj">
       <Project>{58DFA441-E7CB-4773-8F98-5004C832438C}</Project>
       <Name>ZooRestaurant.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZooRestaurant.Web.Common\ZooRestaurant.Web.Common.csproj">
+      <Project>{40F01272-070A-4498-AD55-F7914F82EB48}</Project>
+      <Name>ZooRestaurant.Web.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

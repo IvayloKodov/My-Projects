@@ -184,7 +184,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -246,7 +245,14 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <ProjectReference Include="..\..\Data\ZooRestaurant.Data.Models\ZooRestaurant.Data.Models.csproj">
+      <Project>{FDAFE732-CECF-4059-9235-97E49CD0811B}</Project>
+      <Name>ZooRestaurant.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\ZooRestaurant.Data\ZooRestaurant.Data.csproj">
+      <Project>{58DFA441-E7CB-4773-8F98-5004C832438C}</Project>
+      <Name>ZooRestaurant.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

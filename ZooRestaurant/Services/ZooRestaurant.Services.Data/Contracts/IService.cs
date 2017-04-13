@@ -1,4 +1,4 @@
-﻿namespace BookShop.Services.Data.Contracts
+﻿namespace ZooRestaurant.Services.Data.Contracts
 {
     public interface IService
     {

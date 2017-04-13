@@ -1,9 +1,9 @@
-﻿namespace BookShop.Services.Data
+﻿namespace ZooRestaurant.Services.Data
 {
     using System;
     using System.Linq;
-    using BookShop.Data.Common.Repositories;
     using Contracts;
+    using ZooRestaurant.Data.Common.Repositories;
 
     public abstract class BaseService<T> : IBaseService<T> where T : class
     {

@@ -40,10 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseService{T}.cs" />
+    <Compile Include="Contracts\IBaseService.cs" />
+    <Compile Include="Contracts\IService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Common\" />
+    <ProjectReference Include="..\..\Data\ZooRestaurant.Data.Common\ZooRestaurant.Data.Common.csproj">
+      <Project>{D75A81A2-B78B-404B-806C-C3D8A8400993}</Project>
+      <Name>ZooRestaurant.Data.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

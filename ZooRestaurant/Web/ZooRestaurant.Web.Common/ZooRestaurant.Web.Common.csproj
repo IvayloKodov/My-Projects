@@ -82,6 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\IMapping.cs" />
     <Compile Include="Models\ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="Models\ViewModels\Account\ExternalLoginListViewModel.cs" />
     <Compile Include="Models\ViewModels\Account\ForgotPasswordViewModel.cs" />

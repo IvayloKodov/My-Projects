@@ -11,7 +11,12 @@
     {
         public static MapperConfiguration Configuration { get; private set; }
 
-        public void Execute(Assembly assembly)
+        public static void Initialize(Assembly assembly)
+        {
+            new AutoMapperConfig().Execute(assembly);
+        }
+
+        private void Execute(Assembly assembly)
         {
             Configuration = new MapperConfiguration(
                 cfg =>

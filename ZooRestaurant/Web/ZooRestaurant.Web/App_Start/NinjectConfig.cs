@@ -12,6 +12,7 @@ namespace ZooRestaurant.Web
     using Data.Common.Repositories;
     using Data.Models;
     using Microsoft.AspNet.Identity.EntityFramework;
+    using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
     using Ninject;
     using Ninject.Extensions.Conventions;
@@ -68,13 +69,20 @@ namespace ZooRestaurant.Web
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IdentityDbContext<User>>().To<ZooRestaurantContext>().InRequestScope();
+            kernel.Bind<ZooRestaurantContext>().ToSelf().InRequestScope();
 
             kernel.Bind(typeof(IRepository<>)).To(typeof(EfGenericRepository<>));
 
             kernel.Bind(h => h.From(Assembly.GetAssembly(typeof(IService)))
                               .SelectAllClasses()
                               .BindDefaultInterface());
+
+            //Bind SignInManager and UserManager
+            kernel.Bind<ApplicationSignInManager>()
+                .ToMethod(b => HttpContext.Current.GetOwinContext().Get<ApplicationSignInManager>());
+
+            kernel.Bind<ApplicationUserManager>()
+                .ToMethod(b => HttpContext.Current.GetOwinContext().Get<ApplicationUserManager>());
         }
     }
 }

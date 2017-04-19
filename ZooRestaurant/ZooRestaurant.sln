@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{6A70E323-B14E-4794-9658-5CBA96347EAC}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\bootstrap.css = ..\..\..\bootstrap.css
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{976F6707-48A8-4A6E-9BEF-6154119A9C69}"
 EndProject

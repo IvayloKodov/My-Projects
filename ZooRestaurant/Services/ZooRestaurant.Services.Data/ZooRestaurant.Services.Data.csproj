@@ -68,9 +68,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddressesService.cs" />
+    <Compile Include="Contracts\ICustomersService.cs" />
+    <Compile Include="CustomersService.cs" />
+    <Compile Include="TownsService.cs" />
     <Compile Include="BaseService{T}.cs" />
-    <Compile Include="Contracts\IAddressesService.cs" />
+    <Compile Include="Contracts\ITownsService.cs" />
     <Compile Include="Contracts\IBaseService.cs" />
     <Compile Include="Contracts\IService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

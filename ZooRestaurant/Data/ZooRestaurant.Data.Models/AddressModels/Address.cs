@@ -1,4 +1,4 @@
-﻿namespace ZooRestaurant.Data.Models.CustomerAddressModels
+﻿namespace ZooRestaurant.Data.Models.AddressModels
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;

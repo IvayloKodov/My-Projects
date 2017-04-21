@@ -9,20 +9,26 @@
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
     using Data.Models;
+    using Data.Models.AddressModels;
     using Services.Data.Contracts;
 
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private ApplicationSignInManager signInManager;
         private ApplicationUserManager userManager;
-        private IAddressesService addresses;
+        private readonly ITownsService towns;
+        private readonly ICustomersService customers;
 
-        public AccountController(ApplicationSignInManager signInManager, ApplicationUserManager userManager, IAddressesService addresses)
+        public AccountController(ApplicationSignInManager signInManager,
+                                 ApplicationUserManager userManager,
+                                 ITownsService towns,
+                                 ICustomersService customers)
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
-            this.addresses = addresses;
+            this.towns = towns;
+            this.customers = customers;
         }
 
         //
@@ -48,7 +54,8 @@
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await this.signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var user = this.userManager.FindByEmail(model.Email);
+            var result = await this.signInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -103,48 +110,67 @@
                 case SignInStatus.Failure:
                 default:
                     this.ModelState.AddModelError("", "Invalid code.");
-                    return View(model);
+                    return this.View(model);
             }
         }
 
-        //
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
         {
-            var towns = this.addresses.GetTownsSelectItems();
-            var registerVm = new RegisterViewModel() { Towns = towns };
+            var towns = this.towns.GetAll().ToList();
+            var registerVm = new RegisterViewModel { Towns = new SelectList(towns, "Id", "Name") };
             return this.View(registerVm);
         }
 
-        //
         // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email };
-                var result = await userManager.CreateAsync(user, model.Password);
+                var user = new User
+                {
+                    FirstName = model.Firstname,
+                    LastName = model.LastName,
+                    UserName = model.UserName,
+                    PhoneNumber = model.Phone,
+                    Email = model.Email
+                };
+
+                var result = await this.userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await signInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    await this.signInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    var customer = new Customer()
+                    {
+                        Comment = model.Comment,
+                        UserId = user.Id,
+                        DeliveryAddress = new Address()
+                        {
+                            AdditionalAddress = model.AdditionalAddress,
+                            NeighborhoodId = model.NeighborhoodId
+                        }
+                    };
 
+                    this.customers.Add(customer);
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return this.RedirectToAction("Index", "Home");
                 }
-                AddErrors(result);
+                this.AddErrors(result);
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            var towns = this.towns.GetAll().ToList();
+            model.Towns = new SelectList(towns, "Id", "Name");
+            return this.View(model);
         }
 
         //

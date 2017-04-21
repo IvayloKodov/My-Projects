@@ -1,8 +1,7 @@
-﻿namespace ZooRestaurant.Data.Models.CustomerAddressModels
+﻿namespace ZooRestaurant.Data.Models.AddressModels
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Neighborhood
     {

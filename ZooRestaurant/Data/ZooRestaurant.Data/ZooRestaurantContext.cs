@@ -3,7 +3,7 @@ namespace ZooRestaurant.Data
     using System.Data.Entity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
-    using Models.CustomerAddressModels;
+    using Models.AddressModels;
 
     public class ZooRestaurantContext : IdentityDbContext<User>
     {

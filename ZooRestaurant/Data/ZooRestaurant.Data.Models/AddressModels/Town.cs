@@ -1,4 +1,4 @@
-﻿namespace ZooRestaurant.Data.Models.CustomerAddressModels
+﻿namespace ZooRestaurant.Data.Models.AddressModels
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -19,7 +19,7 @@
         [Required]
         [MaxLength(50)]
         [Index(IsUnique = true)]
-        public string TownName { get; set; }
+        public string Name { get; set; }
 
         public virtual ICollection<Neighborhood> Neighborhoods
         {

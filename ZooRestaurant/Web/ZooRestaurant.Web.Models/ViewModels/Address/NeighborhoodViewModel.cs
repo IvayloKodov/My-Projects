@@ -1,4 +1,4 @@
-﻿namespace ZooRestaurant.Web.Models.Models.ViewModels.Address
+﻿namespace ZooRestaurant.Web.Models.ViewModels.Address
 {
     using Data.Models.AddressModels;
     using Infrastructure.Mapping.Contracts;

@@ -1,6 +1,7 @@
 ﻿namespace ZooRestaurant.Data.Models
 {
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Meal
     {
@@ -17,7 +18,12 @@
 
         public decimal Price { get; set; }
 
+        public int ImageId { get; set; }
 
+        public virtual Image Image { get; set; }
 
+        public int CategoryId { get; set; }
+
+        public virtual MealCategory Category { get; set; }
     }
 }

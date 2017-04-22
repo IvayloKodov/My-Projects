@@ -1,4 +1,4 @@
-namespace ZooRestaurant.Web.Models.Models.ViewModels.Manage
+namespace ZooRestaurant.Web.Models.ViewModels.Manage
 {
     using System.ComponentModel.DataAnnotations;
 

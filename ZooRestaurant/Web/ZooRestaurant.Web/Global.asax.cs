@@ -5,7 +5,7 @@
     using System.Web.Optimization;
     using System.Web.Routing;
     using Infrastructure.Mapping;
-    using Models.Models;
+    using Models.Contracts;
 
     public class MvcApplication : System.Web.HttpApplication
     {

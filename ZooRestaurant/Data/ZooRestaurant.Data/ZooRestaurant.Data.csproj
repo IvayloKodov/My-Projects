@@ -79,8 +79,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\PlovdivNeighborhoods.txt" />
-    <Content Include="Resources\SofiaNeighborhoods.txt" />
+    <Content Include="Resources\Neighborhoods\PlovdivNeighborhoods.txt" />
+    <Content Include="Resources\Neighborhoods\SofiaNeighborhoods.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Images\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

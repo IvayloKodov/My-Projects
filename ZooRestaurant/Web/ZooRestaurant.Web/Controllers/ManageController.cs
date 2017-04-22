@@ -9,7 +9,7 @@ namespace ZooRestaurant.Web.Controllers
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
-    using Models.Models.ViewModels.Manage;
+    using Models.ViewModels.Manage;
 
     [Authorize]
     public class ManageController : Controller

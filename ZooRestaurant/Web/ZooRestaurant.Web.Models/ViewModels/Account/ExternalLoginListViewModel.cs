@@ -1,4 +1,4 @@
-namespace ZooRestaurant.Web.Models.Models.ViewModels.Account
+namespace ZooRestaurant.Web.Models.ViewModels.Account
 {
     public class ExternalLoginListViewModel
     {

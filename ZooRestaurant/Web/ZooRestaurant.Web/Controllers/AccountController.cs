@@ -9,7 +9,7 @@
     using Microsoft.Owin.Security;
     using Data.Models;
     using Data.Models.AddressModels;
-    using Models.Models.ViewModels.Account;
+    using Models.ViewModels.Account;
     using Services.Data.Contracts;
 
     [Authorize]

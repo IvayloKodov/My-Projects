@@ -1,7 +1,9 @@
 ﻿namespace ZooRestaurant.Web.Areas.Admin.Controllers
 {
-    public class AdminController
+    using Web.Controllers;
+
+    public class AdminController : BaseController
     {
-        
+
     }
 }

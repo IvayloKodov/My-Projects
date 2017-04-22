@@ -1,5 +1,6 @@
 namespace ZooRestaurant.Data.Migrations
 {
+    using System;
     using System.Data.Entity.Migrations;
     using System.IO;
     using System.Linq;
@@ -8,7 +9,6 @@ namespace ZooRestaurant.Data.Migrations
     using Models;
     using Models.AddressModels;
     using Web.Common.Constants;
-    using static Web.Common.Helpers.PathHelper;
 
     public sealed class Configuration : DbMigrationsConfiguration<ZooRestaurantContext>
     {
@@ -31,7 +31,7 @@ namespace ZooRestaurant.Data.Migrations
             if (!context.Towns.Any(t => t.Name == townNameCyrilic))
             {
                 var sofiaNeighborhoods =
-                     File.ReadAllLines(MapPath($"../../Resources/{townNameLatin}Neighborhoods.txt"))
+                     File.ReadAllLines($"../../Resources/{townNameLatin}Neighborhoods.txt")
                      .Select(t => t.Trim()).ToList();
 
                 var sofia = new Town() { Name = townNameCyrilic };
@@ -49,20 +49,11 @@ namespace ZooRestaurant.Data.Migrations
         private void CreateRoles(ZooRestaurantContext context)
         {
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-            if (!roleManager.RoleExists(RolesType.Admin))
-            {
-                roleManager.Create(new IdentityRole { Name = RolesType.Admin });
-            }
 
-            if (!roleManager.RoleExists(RolesType.Customer))
-            {
-                roleManager.Create(new IdentityRole { Name = RolesType.Customer });
-            }
+            context.Roles.AddOrUpdate(r => r.Name, new IdentityRole { Name = RolesType.Admin }
+                                                 , new IdentityRole { Name = RolesType.Customer }
+                                                 , new IdentityRole { Name = RolesType.Dispatcher });
 
-            if (!roleManager.RoleExists(RolesType.Dispatcher))
-            {
-                roleManager.Create(new IdentityRole { Name = RolesType.Dispatcher });
-            }
             context.SaveChanges();
         }
 
@@ -79,12 +70,26 @@ namespace ZooRestaurant.Data.Migrations
                     PhoneNumber = "0897903353",
                     Email = "ivo@abv.bg"
                 };
-               
+
                 userManager.Create(user, "123456");
                 userManager.AddToRole(user.Id, RolesType.Admin);
 
                 context.SaveChanges();
             }
+        }
+
+        private Image GetSampleImage()
+        {
+            var fileName = String.Empty;
+            var file = File.ReadAllBytes("Migrations/Resources/Images/" + fileName);
+
+            var image = new Image()
+            {
+                Content = file,
+                FileExtension = "jpg"
+            };
+
+            return image;
         }
     }
 }

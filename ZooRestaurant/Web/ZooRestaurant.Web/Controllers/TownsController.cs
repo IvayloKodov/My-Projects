@@ -3,7 +3,7 @@
     using System.Linq;
     using System.Web.Mvc;
     using Infrastructure.Mapping.Extensions;
-    using Models.Models.ViewModels.Address;
+    using Models.ViewModels.Address;
     using Services.Data.Contracts;
 
     [RoutePrefix("towns")]

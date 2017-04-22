@@ -6,10 +6,10 @@ namespace ZooRestaurant.Web.Controllers
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
-    using Common.Models.ViewModels.Manage;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
+    using Models.Models.ViewModels.Manage;
 
     [Authorize]
     public class ManageController : Controller

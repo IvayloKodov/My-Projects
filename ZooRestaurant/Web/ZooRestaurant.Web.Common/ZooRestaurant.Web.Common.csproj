@@ -87,31 +87,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\RolesType.cs" />
+    <Compile Include="Constants\ValidationConstants.cs" />
     <Compile Include="Helpers\PathHelper.cs" />
-    <Compile Include="Models\IMapping.cs" />
-    <Compile Include="Models\ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
-    <Compile Include="Models\ViewModels\Account\ExternalLoginListViewModel.cs" />
-    <Compile Include="Models\ViewModels\Account\ForgotPasswordViewModel.cs" />
-    <Compile Include="Models\ViewModels\Account\ForgotViewModel.cs" />
-    <Compile Include="Models\ViewModels\Account\LoginViewModel.cs" />
-    <Compile Include="Models\ViewModels\Account\RegisterViewModel.cs" />
-    <Compile Include="Models\ViewModels\Account\ResetPasswordViewModel.cs" />
-    <Compile Include="Models\ViewModels\Account\SendCodeViewModel.cs" />
-    <Compile Include="Models\ViewModels\Account\VerifyCodeViewModel.cs" />
-    <Compile Include="Models\ViewModels\Address\NeighborhoodViewModel.cs" />
-    <Compile Include="Models\ViewModels\Manage\AddPhoneNumberViewModel.cs" />
-    <Compile Include="Models\ViewModels\Manage\ChangePasswordViewModel.cs" />
-    <Compile Include="Models\ViewModels\Manage\ConfigureTwoFactorViewModel.cs" />
-    <Compile Include="Models\ViewModels\Manage\FactorViewModel.cs" />
-    <Compile Include="Models\ViewModels\Manage\ManageLoginsViewModel.cs" />
-    <Compile Include="Models\ViewModels\Manage\IndexViewModel.cs" />
-    <Compile Include="Models\ViewModels\Manage\SetPasswordViewModel.cs" />
-    <Compile Include="Models\ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\BindingModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

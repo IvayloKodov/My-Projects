@@ -4,8 +4,8 @@
     using System.Web.Mvc;
     using System.Web.Optimization;
     using System.Web.Routing;
-    using Common.Models;
     using Infrastructure.Mapping;
+    using Models.Models;
 
     public class MvcApplication : System.Web.HttpApplication
     {

@@ -2,8 +2,8 @@
 {
     using System.Linq;
     using System.Web.Mvc;
-    using Common.Models.ViewModels.Address;
     using Infrastructure.Mapping.Extensions;
+    using Models.Models.ViewModels.Address;
     using Services.Data.Contracts;
 
     [RoutePrefix("towns")]

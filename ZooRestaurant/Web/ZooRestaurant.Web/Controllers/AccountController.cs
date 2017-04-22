@@ -4,12 +4,12 @@
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
-    using Common.Models.ViewModels.Account;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
     using Data.Models;
     using Data.Models.AddressModels;
+    using Models.Models.ViewModels.Account;
     using Services.Data.Contracts;
 
     [Authorize]

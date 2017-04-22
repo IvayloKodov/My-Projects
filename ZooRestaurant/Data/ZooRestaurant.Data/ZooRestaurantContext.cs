@@ -18,20 +18,11 @@ namespace ZooRestaurant.Data
 
         public virtual IDbSet<Customer> Customers { get; set; }
 
+        public virtual IDbSet<Meal> Meals { get; set; }
+
         public static ZooRestaurantContext Create()
         {
             return new ZooRestaurantContext();
-        }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            //modelBuilder.Entity<Address>()
-            //            .HasRequired(n => n.Town)
-            //            .WithMany(t => t.Addresses)
-            //            .HasForeignKey(n => n.TownId)
-            //            .WillCascadeOnDelete(false);
-
-            base.OnModelCreating(modelBuilder);
         }
     }
 }

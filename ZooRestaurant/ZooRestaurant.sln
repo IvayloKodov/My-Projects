@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZooRestaurant.Services.Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZooRestaurant.Web.Common", "Web\ZooRestaurant.Web.Common\ZooRestaurant.Web.Common.csproj", "{40F01272-070A-4498-AD55-F7914F82EB48}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZooRestaurant.Web.Models", "Web\ZooRestaurant.Web.Models\ZooRestaurant.Web.Models.csproj", "{AFC956F7-052D-446B-A7CB-DF211EAC5CA5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{40F01272-070A-4498-AD55-F7914F82EB48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40F01272-070A-4498-AD55-F7914F82EB48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40F01272-070A-4498-AD55-F7914F82EB48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFC956F7-052D-446B-A7CB-DF211EAC5CA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFC956F7-052D-446B-A7CB-DF211EAC5CA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFC956F7-052D-446B-A7CB-DF211EAC5CA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFC956F7-052D-446B-A7CB-DF211EAC5CA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

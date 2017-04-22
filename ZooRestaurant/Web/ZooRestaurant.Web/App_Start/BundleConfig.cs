@@ -26,8 +26,11 @@
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/Css/bootstrap.css",
                       "~/Content/Css/bootstrap-theme.css",
-                      "~/Content/Css/font-awesome.min.css",
-                      "~/Content/Css/main.css"));
+                      "~/Content/Css/Site.css",
+                      "~/Content/Css/font-awesome.css"));
+
+            //Minification of files!
+            //BundleTable.EnableOptimizations = true;
         }
     }
 }

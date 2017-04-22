@@ -206,6 +206,7 @@
     <Compile Include="App_Start\SmsService.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\TownsController.cs" />
@@ -222,10 +223,10 @@
     <Content Include="Content\Css\bootstrap-theme.min.css" />
     <Content Include="Content\Css\bootstrap.css" />
     <Content Include="Content\Css\bootstrap.min.css" />
-    <Content Include="Content\Css\carousel.css" />
-    <Content Include="Content\Css\font-awesome.min.css" />
-    <Content Include="Content\Css\main.css" />
+    <Content Include="Content\Css\font-awesome.css" />
+    <Content Include="Content\Images\interior2.jpg" />
     <Content Include="Content\Images\interior.png" />
+    <Content Include="Content\Images\interior3.jpg" />
     <Content Include="Content\Images\night.jpg" />
     <Content Include="Content\Images\Skin2-white.png" />
     <Content Include="Content\Images\top.png" />
@@ -250,6 +251,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Areas\Admin\Views\web.config" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\Custom\ChangeTownNeigborhoods.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -329,6 +331,10 @@
       <Project>{03870199-2579-431E-8876-610F302E110C}</Project>
       <Name>ZooRestaurant.Web.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ZooRestaurant.Web.Models\ZooRestaurant.Web.Models.csproj">
+      <Project>{AFC956F7-052D-446B-A7CB-DF211EAC5CA5}</Project>
+      <Name>ZooRestaurant.Web.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -336,6 +342,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

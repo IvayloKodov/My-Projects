@@ -1,7 +1,7 @@
-﻿using System.Web.Mvc;
-
-namespace ZooRestaurant.Web.Areas.Admin
+﻿namespace ZooRestaurant.Web.Areas.Admin
 {
+    using System.Web.Mvc;
+
     public class AdminAreaRegistration : AreaRegistration
     {
         public override string AreaName => "Admin";

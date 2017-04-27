@@ -1,17 +1,25 @@
 namespace ZooRestaurant.Data.Migrations
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity.Migrations;
     using System.IO;
     using System.Linq;
+    using System.Reflection;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
     using Models.AddressModels;
+    using Newtonsoft.Json;
     using Web.Common.Constants;
+    using Web.Common.Enums.Meals;
+    using Web.Common.Extensions;
+    using Web.Common.Helpers;
 
     public sealed class Configuration : DbMigrationsConfiguration<ZooRestaurantContext>
     {
+        private ZooRestaurantContext context;
+
         public Configuration()
         {
             this.AutomaticMigrationsEnabled = true;
@@ -20,48 +28,94 @@ namespace ZooRestaurant.Data.Migrations
 
         protected override void Seed(ZooRestaurantContext context)
         {
-            this.SeedTownAndNeighborhoods("София", "Sofia", context);
-            this.SeedTownAndNeighborhoods("Пловдив", "Plovdiv", context);
-            this.CreateRoles(context);
-            this.CreateAdminUser(context);
+            this.context = context;
+
+            this.SeedTownAndNeighborhoods("София", "Sofia");
+            this.SeedTownAndNeighborhoods("Пловдив", "Plovdiv");
+
+            this.CreateRoles();
+            this.CreateAdminUser();
+
+            this.CreateMealCategories();
+            this.CreateMealsByCategory();
         }
 
-        private void SeedTownAndNeighborhoods(string townNameCyrilic, string townNameLatin, ZooRestaurantContext context)
+        private void CreateMealsByCategory()
         {
-            if (!context.Towns.Any(t => t.Name == townNameCyrilic))
+            this.AddMealsFromJson("Resources/Salads/Salads.json", MealCategoryEnType.Salads);
+            this.AddMealsFromJson("Resources/Starters/Starters.json", MealCategoryEnType.Starters);
+            this.AddMealsFromJson("Resources/ChickenDishes/ChickenDishes.json", MealCategoryEnType.ChickenDishes);
+            this.AddMealsFromJson("Resources/FishDishes/FishDishes.json", MealCategoryEnType.FishDishes);
+            this.AddMealsFromJson("Resources/PorkDishes/PorkDishes.json", MealCategoryEnType.PorkDishes);
+            this.AddMealsFromJson("Resources/BeafDishes/BeafDishes.json", MealCategoryEnType.BeafDishes);
+            this.AddMealsFromJson("Resources/Garnitures/Garnitures.json", MealCategoryEnType.Garnitures);
+            this.AddMealsFromJson("Resources/Desserts/Desserts.json", MealCategoryEnType.Desserts);
+            this.AddMealsFromJson("Resources/Sauces/Sauces.json", MealCategoryEnType.Sauces);
+
+        }
+
+        private void AddMealsFromJson(string path, MealCategoryEnType category)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var filePath = PathHelper.MapPath(path, assembly);
+            var mealsJson = File.ReadAllText(filePath);
+            var meals = JsonConvert.DeserializeObject<IEnumerable<Meal>>(mealsJson).ToArray();
+
+            var categoryName = category.GetDisplayName();
+            var mealCategory = this.context.MealCategories.First(c => c.Name == categoryName);
+
+            foreach (var meal in meals)
             {
-                var sofiaNeighborhoods =
-                     File.ReadAllLines($"../../Resources/{townNameLatin}Neighborhoods.txt")
-                     .Select(t => t.Trim()).ToList();
+                meal.CategoryId = mealCategory.Id;
 
-                var sofia = new Town() { Name = townNameCyrilic };
-                context.Towns.Add(sofia);
-                context.SaveChanges();
-
-                var city = context.Towns.First(t => t.Name == townNameCyrilic);
-                foreach (var neighborhood in sofiaNeighborhoods)
+                foreach (var mealImage in meal.Images)
                 {
-                    context.Neighborhoods.Add(new Neighborhood() { Name = neighborhood, TownId = city.Id });
+                    mealImage.Content = File.ReadAllBytes(PathHelper.MapPath(mealImage.UrlPath, assembly));
                 }
             }
+
+            this.context.Meals.AddOrUpdate(m => m.Name, meals);
+            this.context.SaveChanges();
         }
 
-        private void CreateRoles(ZooRestaurantContext context)
+        private void SeedTownAndNeighborhoods(string townNameCyrilic, string townNameLatin)
         {
-            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            var town = new Town { Name = townNameCyrilic };
+            this.context.Towns.AddOrUpdate(t => t.Name, town);
+            this.context.SaveChanges();
 
-            context.Roles.AddOrUpdate(r => r.Name, new IdentityRole { Name = RolesType.Admin }
-                                                 , new IdentityRole { Name = RolesType.Customer }
-                                                 , new IdentityRole { Name = RolesType.Dispatcher });
+            var neighborhoodsFilePath =
+                PathHelper.MapPath($"Resources/Neighborhoods/{townNameLatin}Neighborhoods.txt", Assembly.GetExecutingAssembly());
 
-            context.SaveChanges();
+            var townNeighborhoods = File.ReadAllLines(neighborhoodsFilePath)
+                                         .Select(t => t.Trim())
+                                         .Select(neighborhoodName => new Neighborhood
+                                         {
+                                             Name = neighborhoodName,
+                                             TownId = town.Id
+                                         })
+                                         .ToArray();
+
+            this.context.Neighborhoods.AddOrUpdate(n => n.Name, townNeighborhoods);
+            this.context.SaveChanges();
         }
 
-        private void CreateAdminUser(ZooRestaurantContext context)
+        private void CreateRoles()
         {
-            if (!context.Users.Any())
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(this.context));
+
+            this.context.Roles.AddOrUpdate(r => r.Name, new IdentityRole { Name = RolesType.Admin }
+                                                      , new IdentityRole { Name = RolesType.Customer }
+                                                      , new IdentityRole { Name = RolesType.Dispatcher });
+
+            this.context.SaveChanges();
+        }
+
+        private void CreateAdminUser()
+        {
+            if (!this.context.Users.Any(u => u.Email == "ivo@abv.bg"))
             {
-                var userManager = new UserManager<User>(new UserStore<User>(context));
+                var userManager = new UserManager<User>(new UserStore<User>(this.context));
                 var user = new User()
                 {
                     FirstName = "Ivaylo",
@@ -74,22 +128,22 @@ namespace ZooRestaurant.Data.Migrations
                 userManager.Create(user, "123456");
                 userManager.AddToRole(user.Id, RolesType.Admin);
 
-                context.SaveChanges();
+                this.context.SaveChanges();
             }
         }
 
-        private Image GetSampleImage()
+        private void CreateMealCategories()
         {
-            var fileName = String.Empty;
-            var file = File.ReadAllBytes("Migrations/Resources/Images/" + fileName);
+            var meals = Enum
+                            .GetValues(typeof(MealCategoryEnType))
+                            .Cast<MealCategoryEnType>()
+                            .Select(c => c.GetDisplayName())
+                            .Select(mealName => new MealCategory { Name = mealName })
+                            .ToArray();
 
-            var image = new Image()
-            {
-                Content = file,
-                FileExtension = "jpg"
-            };
+            this.context.MealCategories.AddOrUpdate(m => m.Name, meals);
 
-            return image;
+            this.context.SaveChanges();
         }
     }
 }

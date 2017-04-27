@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Zoo Restaurant</title>
+    @Styles.Render("~/Content/css")
+
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("styles", required: false)
+
+</head>
+<body>
+    <div class="navbar navbar-fixed-top navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Project name</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/Home/Index"><i class="fa fa-home fa-lg"></i></a></li>
+                    <li>@Html.ActionLink("Меню", "Dishes", "Menu")</li>
+                    <li>@Html.ActionLink("Галерия", "", "")</li>
+                    <li>@Html.ActionLink("Доставка", "", "")</li>
+                    <li>@Html.ActionLink("Контакти", "", "")</li>
+                </ul>
+            </div>
+            <!-- /.nav-collapse -->
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /.navbar -->
+    <div class="container-fluid">
+        <div class="row row-offcanvas row-offcanvas-left">
+            <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+                <div class="sidebar-nav">
+                    <ul class="nav">
+                        @Html.Partial("_MealCategoriesLinks")
+                    </ul>
+                </div>
+                <!--/.well -->
+            </div>
+            <!--/span-->
+            <div class="col-xs-12 col-sm-9">
+                <div class="container-fluid body-content">
+                    @RenderBody()
+                </div>
+            </div>
+            <!--/span-->
+
+        </div>
+        <!--/row-->
+        <hr>
+        <footer>
+            <p>© Company 2013</p>
+        </footer>
+    </div>
+    <!--/.container-->
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

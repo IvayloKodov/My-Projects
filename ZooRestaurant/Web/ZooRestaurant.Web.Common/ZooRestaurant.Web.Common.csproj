@@ -89,6 +89,10 @@
   <ItemGroup>
     <Compile Include="Constants\RolesType.cs" />
     <Compile Include="Constants\ValidationConstants.cs" />
+    <Compile Include="Constants\ViewConstants.cs" />
+    <Compile Include="Helpers\EnumUtil.cs" />
+    <Compile Include="Enums\Meals\MealCategoryEnType.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Helpers\PathHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

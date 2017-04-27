@@ -1,0 +1,38 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<ZooRestaurant.Web.Models.ViewModels.Meals.MealViewModel>
+@{
+    ViewBag.Title = "Меню";
+}
+
+@section Styles{
+    <link href="~/Content/Css/equal-height-columns.css" rel="stylesheet" />
+}
+
+<div id="menu" class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="nav nav-pills nav-stacked">
+                @Html.Partial("_MealCategoriesLinks")
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <div class="row row-eq-height">
+                @{ int counter = 1;}
+                @foreach (var mealViewModel in @Model)
+                {
+                    @Html.Partial("_MealPartial", mealViewModel)
+
+                    if (counter++ % 3 == 0)
+                    {
+                        @:</div>
+                        @:<div class="row row-eq-height">
+                    }
+                }
+            </div>
+
+            <div class="row">
+                @Html.PagedListPager(Model, page => Url.Action("Dishes", new { page }))
+            </div>
+        </div>
+    </div>
+</div>

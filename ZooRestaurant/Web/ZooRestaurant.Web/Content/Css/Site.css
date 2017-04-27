@@ -7,8 +7,9 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+   
+    background-image: url(../../Content/Images/menuBackground.jpg);
 }
-
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
@@ -27,6 +28,11 @@ i {
     width: 20px;
 }
 
-#homeButton {
-    border-right: 1px solid #e0ffff;
+#menu {
+    padding-top: 1%;
+}
+
+
+.thumbnail {
+     background:rgba(0, 0, 0, 0.4)
 }

@@ -8,14 +8,14 @@
 
     public static class PathHelper
     {
-        public static string MapPath(string filePath)
+        public static string MapPath(string filePath,Assembly assembly)
         {
-            if (HttpContext.Current != null)
-                return HostingEnvironment.MapPath(filePath);
+            //if (HttpContext.Current != null)
+            //    return HostingEnvironment.MapPath(filePath);
 
-            var absolutePath = new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath;
+            var absolutePath = new Uri(assembly.CodeBase).AbsolutePath;
             var directoryName = Path.GetDirectoryName(absolutePath);
-            var path = Path.Combine(directoryName, ".." + filePath.TrimStart('~').Replace('/', '\\'));
+            var path = Path.Combine(directoryName, filePath.TrimStart('~').Replace('/', '\\'));
 
             return path;
         }

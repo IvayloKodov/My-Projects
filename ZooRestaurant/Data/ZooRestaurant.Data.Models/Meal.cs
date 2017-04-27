@@ -1,10 +1,17 @@
 ﻿namespace ZooRestaurant.Data.Models
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Meal
     {
+        private ICollection<Image> images;
+
+        public Meal()
+        {
+            this.images = new HashSet<Image>();
+        }
+
         [Key]
         public int Id { get; set; }
 
@@ -18,12 +25,14 @@
 
         public decimal Price { get; set; }
 
-        public int ImageId { get; set; }
-
-        public virtual Image Image { get; set; }
-
         public int CategoryId { get; set; }
 
         public virtual MealCategory Category { get; set; }
+
+        public virtual ICollection<Image> Images
+        {
+            get { return this.images; }
+            set { this.images = value; }
+        }
     }
 }

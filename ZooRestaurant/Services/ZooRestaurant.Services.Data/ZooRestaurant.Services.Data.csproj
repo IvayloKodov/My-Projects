@@ -69,7 +69,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\ICustomersService.cs" />
+    <Compile Include="Contracts\IMealsService.cs" />
     <Compile Include="CustomersService.cs" />
+    <Compile Include="MealsService.cs" />
     <Compile Include="TownsService.cs" />
     <Compile Include="BaseService{T}.cs" />
     <Compile Include="Contracts\ITownsService.cs" />

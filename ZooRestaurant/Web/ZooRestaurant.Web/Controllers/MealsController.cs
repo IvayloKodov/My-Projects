@@ -23,8 +23,10 @@
 
             if (meal == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                this.Response.StatusCode = (int)HttpStatusCode.NotFound;
+                return this.Content("Meal not found");
             }
+
             var mealVm = this.Mapper.Map<MealDetailsViewModel>(meal);
 
             return this.View(mealVm);

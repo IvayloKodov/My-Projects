@@ -16,18 +16,26 @@
             </ul>
         </div>
         <div class="col-md-9">
-            <div class="row row-eq-height">
-                @{ int counter = 1;}
-                @foreach (var mealViewModel in @Model)
-                {
-                    @Html.Partial("_MealPartial", mealViewModel)
-
-                    if (counter++ % 3 == 0)
+            <div class="row">
+                <div class="col-md-offset-8 col-md-4">
+                    @using (Ajax.BeginForm("Search", null,
+        new AjaxOptions
+        {
+            UpdateTargetId = "content",
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "POST"
+        }, new { id = "searchForm" }))
                     {
-                        @:</div>
-                        @:<div class="row row-eq-height">
+                        <div class="form-inline">
+                            <input class="form-control" type="text" name="query" oninput="changed()" />
+                            <input type="submit" class="btn btn-info" value="Търсене" />
+                        </div>
                     }
-                }
+                </div>
+            </div>
+
+            <div id="content">
+                @Html.Partial("_MealsResults", @Model)
             </div>
 
             <div class="row">
@@ -36,3 +44,11 @@
         </div>
     </div>
 </div>
+
+@section Scripts{
+    <script>
+        function changed() {
+            $("#searchForm").submit();
+        }
+    </script>
+}

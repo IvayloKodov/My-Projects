@@ -1,0 +1,103 @@
+﻿@model IEnumerable<ZooRestaurant.Web.Models.ViewModels.Meals.MealCartViewModel>
+@{
+    ViewBag.Title = "Количка";
+}
+
+<h2 class="text-center">Количка</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Продукти</th>
+                        <th>Количество</th>
+                        <th class="text-center">Цена</th>
+                        <th class="text-center">Всичко</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var mealCartViewModel in @Model)
+                    {
+                        <tr>
+                            <td class="col-sm-8 col-md-6">
+                                <div class="media">
+                                    <a class="thumbnail pull-left" href="#"> <img class="media-object" src="@Url.Action("GetImage","Images",new {id=@mealCartViewModel.Id})" style="width: 72px; height: 72px;"> </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading text-center"><a href="/Meals/@mealCartViewModel.Id/Details">@mealCartViewModel.Name</a></h4>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="col-sm-1 col-md-1" style="text-align: center">
+                                <input type="number" class="form-control" id="quantity" value="@mealCartViewModel.Quantity" min="1">
+                            </td>
+                            <td class="col-sm-1 col-md-1 text-center"><strong>@mealCartViewModel.Price лв.</strong></td>
+                            @{
+                                var price = mealCartViewModel.Price * mealCartViewModel.Quantity;
+                            }
+                            <td class="col-sm-1 col-md-1 text-center"><strong>@price лв.</strong></td>
+                            <td class="col-sm-1 col-md-1">
+                                <button type="button" class="btn btn-danger">
+                                    <span class="glyphicon glyphicon-remove"></span> Изтрий
+                                </button>
+                            </td>
+
+
+
+                        </tr>
+                                }
+
+                    <tr>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td><h5>Всичко</h5></td>
+                        @{
+                            decimal total = @Model.Sum(m => m.TotalPrice);
+                        }
+                        <td class="text-right"><h5><strong>@total лв.</strong></h5></td>
+                    </tr>
+
+                    <tr>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td><h5>Доставка</h5></td>
+                        <td class="text-right"><h5><strong>2 лв.</strong></h5></td>
+                    </tr>
+
+                    <tr>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td>
+                            <h3>Крайна цена</h3>
+                        </td>
+                        <td class="text-right">
+                            <h3>
+                                <strong>@(total + 2) лв.</strong>
+                            </h3>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td> </td>
+                        <td>
+                            <a href="/Menu" class="btn btn-danger"><i class="fa fa-shopping-cart"></i> Продължи</a>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-success">
+                                Поръчай <span class="glyphicon glyphicon-play"></span>
+                            </button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

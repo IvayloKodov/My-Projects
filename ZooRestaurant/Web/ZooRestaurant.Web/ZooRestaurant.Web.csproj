@@ -217,6 +217,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\User\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ImagesController.cs" />
@@ -302,6 +303,8 @@
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Scripts\jquery.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -345,11 +348,13 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Towns\_NeighborhoodsDropDown.cshtml" />
-    <Content Include="Views\Shared\_MealPartial.cshtml" />
     <Content Include="Views\Menu\Index.cshtml" />
     <Content Include="Views\Shared\_MealCategoriesLinks.cshtml" />
     <Content Include="Views\Meals\Details.cshtml" />
     <Content Include="Views\Shared\_MenuLayout.cshtml" />
+    <Content Include="Views\Shared\_MealsResults.cshtml" />
+    <Content Include="Views\Shared\_NavShoppingCart.cshtml" />
+    <Content Include="Views\ShoppingCart\ViewCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Data\ZooRestaurant.Data.Common\ZooRestaurant.Data.Common.csproj">

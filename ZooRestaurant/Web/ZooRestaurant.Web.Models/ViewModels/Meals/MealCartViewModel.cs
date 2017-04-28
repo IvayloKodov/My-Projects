@@ -1,26 +1,28 @@
 ﻿namespace ZooRestaurant.Web.Models.ViewModels.Meals
 {
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    using AutoMapper;
     using Data.Models;
     using Infrastructure.Mapping.Contracts;
 
-    public class MealDetailsViewModel : IMapFrom<Meal>
+    public class MealCartViewModel : IMapFrom<Meal>
     {
+        public MealCartViewModel()
+        {
+            this.Quantity = 1;
+        }
+
         public int Id { get; set; }
 
-        [Display(Name = "Име")]
         public string Name { get; set; }
 
-        [Display(Name = "Грамаж")]
-        public int Weight { get; set; }
-
-        [Display(Name = "Съдържание")]
-        public string Description { get; set; }
-
-        [Display(Name = "Цена")]
         public decimal Price { get; set; }
 
+        public int Quantity { get; set; }
+
         public virtual IEnumerable<Image> Images { get; set; }
+
+        [IgnoreMap]
+        public decimal TotalPrice => this.Quantity * this.Price;
     }
 }

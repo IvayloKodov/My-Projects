@@ -91,6 +91,10 @@
       <Project>{FDAFE732-CECF-4059-9235-97E49CD0811B}</Project>
       <Name>ZooRestaurant.Data.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Web\ZooRestaurant.Web.Common\ZooRestaurant.Web.Common.csproj">
+      <Project>{40F01272-070A-4498-AD55-F7914F82EB48}</Project>
+      <Name>ZooRestaurant.Web.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

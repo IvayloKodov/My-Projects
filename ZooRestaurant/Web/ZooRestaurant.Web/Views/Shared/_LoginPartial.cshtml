@@ -6,10 +6,19 @@
         @Html.AntiForgeryToken()
 
         <ul class="nav navbar-nav navbar-right">
-            <li>
-                @Html.ActionLink("Здравей, " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @Html.Partial("_NavShoppingCart")
+     
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-user"></span> @User.Identity.GetUserName() <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="" ><span class="glyphicon glyphicon-user"></span> Профил</a></li>
+                    <li><a href="/Manage/Index" title = "Manage"><span class="glyphicon glyphicon-cog"></span> Настройки</a></li>
+                    <li class="divider"></li>
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()"><span class="glyphicon glyphicon-off"></span> Излез</a></li>
+                </ul>
             </li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Излез</a></li>
         </ul>
     }
 }

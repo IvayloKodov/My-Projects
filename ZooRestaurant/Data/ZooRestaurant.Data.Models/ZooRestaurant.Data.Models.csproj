@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cart.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="AddressModels\Address.cs" />
     <Compile Include="AddressModels\Neighborhood.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="MealCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AddressModels\Town.cs" />
+    <Compile Include="ShoppingCart.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>

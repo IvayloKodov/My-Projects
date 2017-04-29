@@ -20,5 +20,9 @@
 
         [ForeignKey("UserId")]
         public virtual User User { get; set; }
+
+        public int ShoppingCartId { get; set; }
+
+        public virtual ShoppingCart ShoppingCart { get; set; }
     }
 }

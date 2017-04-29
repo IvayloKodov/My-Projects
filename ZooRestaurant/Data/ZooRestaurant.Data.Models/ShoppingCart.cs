@@ -2,13 +2,12 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using Web.Common.Constants;
 
-    public class Image
+    public class ShoppingCart
     {
         private ICollection<Cart> carts;
 
-        public Image()
+        public ShoppingCart()
         {
             this.carts = new HashSet<Cart>();
         }
@@ -16,17 +15,9 @@
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        [MaxLength(ValidationConstants.MaxFileExtensionLength)]
-        public string FileExtension { get; set; }
+        public int CustomerId { get; set; }
 
-        public byte[] Content { get; set; }
-
-        public string UrlPath { get; set; }
-
-        public int? MealId { get; set; }
-
-        public virtual Meal Meal { get; set; }
+        public virtual Customer Customer { get; set; }
 
         public virtual ICollection<Cart> Carts
         {

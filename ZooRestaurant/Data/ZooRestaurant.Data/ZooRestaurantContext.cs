@@ -32,10 +32,10 @@ namespace ZooRestaurant.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Meal>()
-            //            .HasOptional(i => i.Image)
-            //            .WithRequired(m => m.Meal)
-            //            .WillCascadeOnDelete(false);
+            modelBuilder.Entity<ShoppingCart>()
+                        .HasRequired(s => s.Customer)
+                        .WithRequiredDependent(c => c.ShoppingCart)
+                        .WillCascadeOnDelete(false);
 
             base.OnModelCreating(modelBuilder);
         }

@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using Web.Common.Constants;
 
     public class Meal
     {
@@ -16,7 +17,7 @@
         public int Id { get; set; }
 
         [Required]
-        [StringLength(200)]
+        [StringLength(ValidationConstants.MaxMealNameLength)]
         public string Name { get; set; }
 
         public int Weight { get; set; }

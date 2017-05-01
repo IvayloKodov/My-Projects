@@ -6,15 +6,33 @@
         @Html.AntiForgeryToken()
 
         <ul class="nav navbar-nav navbar-right">
-            @Html.Partial("_NavShoppingCart")
-     
+        @if (User.IsInRole("Customer"))
+        {
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                    <span class="badge">@Html.Action("CartCount", "ShoppingCart")</span>
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-cart" role="menu">
+
+                    @Html.Action("Items", "ShoppingCart")
+
+                    <li class="divider"></li>
+                    <li><p class="text-center">Всичко:   <strong>@Html.Action("TotalPrice","ShoppingCart") лв.</strong></p></li>
+                    <li class="divider"></li>
+                    <li>@Html.ActionLink("Виж поръчката", "ViewCart", "ShoppingCart", null, new { @class = "text-center" })</li>
+                </ul>
+            </li>
+        }
+
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <span class="glyphicon glyphicon-user"></span> @User.Identity.GetUserName() <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="" ><span class="glyphicon glyphicon-user"></span> Профил</a></li>
-                    <li><a href="/Manage/Index" title = "Manage"><span class="glyphicon glyphicon-cog"></span> Настройки</a></li>
+                    <li><a href=""><span class="glyphicon glyphicon-user"></span> Профил</a></li>
+                    <li><a href="/Manage/Index" title="Manage"><span class="glyphicon glyphicon-cog"></span> Настройки</a></li>
                     <li class="divider"></li>
                     <li><a href="javascript:document.getElementById('logoutForm').submit()"><span class="glyphicon glyphicon-off"></span> Излез</a></li>
                 </ul>
@@ -25,7 +43,7 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-            <li><a href="/Account/Register" id="registerLink"><i class="fa fa-user" aria-hidden="true"></i> Регистрация</a></li>
-            <li><a href="/Account/Login" id="loginLink"><i class="fa fa-sign-in" aria-hidden="true"></i> Влез</a></li>
-        </ul>
+        <li><a href="/Account/Register" id="registerLink"><i class="fa fa-user" aria-hidden="true"></i> Регистрация</a></li>
+        <li><a href="/Account/Login" id="loginLink"><i class="fa fa-sign-in" aria-hidden="true"></i> Влез</a></li>
+    </ul>
 }

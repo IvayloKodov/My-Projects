@@ -1,4 +1,4 @@
-﻿namespace ZooRestaurant.Web.Controllers
+﻿namespace ZooRestaurant.Web.Controllers.Base
 {
     using System.Web.Mvc;
     using AutoMapper;

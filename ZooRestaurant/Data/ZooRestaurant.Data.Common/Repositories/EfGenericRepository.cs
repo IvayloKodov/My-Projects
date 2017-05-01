@@ -3,7 +3,6 @@
     using System;
     using System.Data.Entity;
     using System.Linq;
-    using Microsoft.AspNet.Identity.EntityFramework;
 
     public class EfGenericRepository<T> : IRepository<T> where T : class
     {

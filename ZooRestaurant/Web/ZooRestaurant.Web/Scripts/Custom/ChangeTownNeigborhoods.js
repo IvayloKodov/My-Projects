@@ -1,5 +1,4 @@
-﻿
-$(document).ready(function () {
+﻿$(document).ready(function () {
     $("#TownId").change(function () {
 
         var townId = $(this).val();

@@ -1,6 +1,11 @@
-﻿@model IEnumerable<ZooRestaurant.Web.Models.ViewModels.Meals.MealCartViewModel>
+﻿@model ZooRestaurant.Web.Models.ViewModels.ShoppingCart.ShoppingCartViewModel
 @{
     ViewBag.Title = "Количка";
+
+    var options = new AjaxOptions()
+    {
+        HttpMethod = "POST",
+    };
 }
 
 <h2 class="text-center">Количка</h2>
@@ -19,29 +24,35 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var mealCartViewModel in @Model)
+                    @foreach (var mealCartViewModel in @Model.Carts)
                     {
                         <tr>
                             <td class="col-sm-8 col-md-6">
                                 <div class="media">
-                                    <a class="thumbnail pull-left" href="#"> <img class="media-object" src="@Url.Action("GetImage","Images",new {id=@mealCartViewModel.Id})" style="width: 72px; height: 72px;"> </a>
+                                    <a class="thumbnail pull-left" href="#"> <img class="media-object" src="@Url.Action("GetImage","Images",new {id=@mealCartViewModel.MealId})" style="width: 72px; height: 72px;"> </a>
                                     <div class="media-body">
-                                        <h4 class="media-heading text-center"><a href="/Meals/@mealCartViewModel.Id/Details">@mealCartViewModel.Name</a></h4>
+                                        <h4 class="media-heading text-center"><a href="/Meals/@mealCartViewModel.MealId/Details">@mealCartViewModel.Name</a></h4>
                                     </div>
                                 </div>
                             </td>
                             <td class="col-sm-1 col-md-1" style="text-align: center">
-                                <input type="number" class="form-control" id="quantity" value="@mealCartViewModel.Quantity" min="1">
+
+                                <p>
+                                    @Ajax.ActionLink("-", "ChangeQuantity", "ShoppingCart", new { id = mealCartViewModel.Id, operation = "minus" }, options, new { @class = "btn btn-danger btn-sm" })
+                                    <span> <strong>@Html.DisplayFor(m => mealCartViewModel.Quantity)</strong> </span>
+                                    @Ajax.ActionLink("+", "ChangeQuantity", "ShoppingCart", new { id = mealCartViewModel.Id, operation = "plus" }, options, new { @class = "btn btn-danger btn-sm" })
+                                </p>
+
                             </td>
                             <td class="col-sm-1 col-md-1 text-center"><strong>@mealCartViewModel.Price лв.</strong></td>
-                            @{
-                                var price = mealCartViewModel.Price * mealCartViewModel.Quantity;
-                            }
-                            <td class="col-sm-1 col-md-1 text-center"><strong>@price лв.</strong></td>
+
+                            <td class="col-sm-1 col-md-1 text-center"><strong>@mealCartViewModel.TotalPrice лв.</strong></td>
                             <td class="col-sm-1 col-md-1">
-                                <button type="button" class="btn btn-danger">
-                                    <span class="glyphicon glyphicon-remove"></span> Изтрий
-                                </button>
+                                @using (@Html.BeginForm("Remove", "ShoppingCart", FormMethod.Post))
+                                {
+                                    <input type="hidden" name="id" value="@mealCartViewModel.Id" />
+                                    <input type="submit" value="Изтрий" class="btn btn-danger" />
+                                }
                             </td>
                         </tr>
                     }
@@ -52,7 +63,7 @@
                         <td> </td>
                         <td><h5>Всичко</h5></td>
                         @{
-                            decimal total = @Model.Sum(m => m.TotalPrice);
+                            decimal total = @Model.Carts.Sum(m => m.TotalPrice);
                         }
                         <td class="text-right"><h5><strong>@total лв.</strong></h5></td>
                     </tr>
@@ -87,9 +98,9 @@
                             <a href="/Menu" class="btn btn-danger"><i class="fa fa-shopping-cart"></i> Продължи</a>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-success">
+                            <a href="/ShoppingCart/CheckOut" class="btn btn-success">
                                 Поръчай <span class="glyphicon glyphicon-play"></span>
-                            </button>
+                            </a>
                         </td>
                     </tr>
 

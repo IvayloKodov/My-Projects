@@ -2,6 +2,6 @@
 {
     public interface IService
     {
-        
+        //Used as a flag of automapper to find services assembly
     }
 }

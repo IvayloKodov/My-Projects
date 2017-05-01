@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class ShoppingCart
     {
@@ -13,10 +14,10 @@
         }
 
         [Key]
+        [ForeignKey("Customer")]
         public int Id { get; set; }
 
-        public int CustomerId { get; set; }
-
+        [Required]
         public virtual Customer Customer { get; set; }
 
         public virtual ICollection<Cart> Carts

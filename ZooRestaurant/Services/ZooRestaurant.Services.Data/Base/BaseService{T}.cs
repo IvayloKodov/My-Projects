@@ -1,4 +1,4 @@
-﻿namespace ZooRestaurant.Services.Data
+﻿namespace ZooRestaurant.Services.Data.Base
 {
     using System;
     using System.Linq;

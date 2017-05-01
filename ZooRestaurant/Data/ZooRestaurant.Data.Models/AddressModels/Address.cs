@@ -28,5 +28,10 @@
             get { return this.customers; }
             set { this.customers = value; }
         }
+
+        public override string ToString()
+        {
+            return $"гр. {this.Neighborhood.Town.Name},кв. {this.Neighborhood.Name}, {this.AdditionalAddress}";
+        }
     }
 }

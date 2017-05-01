@@ -2,8 +2,7 @@
 {
     using System.Linq;
     using System.Web.Mvc;
-    using System.Web.SessionState;
-    using System.Web.UI;
+    using Base;
     using Common.Constants;
     using Common.Extensions;
     using Infrastructure.Mapping.Extensions;

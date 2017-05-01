@@ -30,12 +30,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
@@ -68,18 +86,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\BaseShoppingCartService.cs" />
+    <Compile Include="Contracts\IBaseShoppingCartService.cs" />
     <Compile Include="Contracts\ICustomersService.cs" />
     <Compile Include="Contracts\IMealsService.cs" />
+    <Compile Include="Contracts\IShoppingCartService.cs" />
     <Compile Include="CustomersService.cs" />
     <Compile Include="MealsService.cs" />
+    <Compile Include="ShoppingCartService.cs" />
     <Compile Include="TownsService.cs" />
-    <Compile Include="BaseService{T}.cs" />
+    <Compile Include="Base\BaseService{T}.cs" />
     <Compile Include="Contracts\ITownsService.cs" />
     <Compile Include="Contracts\IBaseService.cs" />
     <Compile Include="Contracts\IService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +117,14 @@
     <ProjectReference Include="..\..\Web\ZooRestaurant.Web.Common\ZooRestaurant.Web.Common.csproj">
       <Project>{40F01272-070A-4498-AD55-F7914F82EB48}</Project>
       <Name>ZooRestaurant.Web.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Web\ZooRestaurant.Web.Infrastructure\ZooRestaurant.Web.Infrastructure.csproj">
+      <Project>{03870199-2579-431E-8876-610F302E110C}</Project>
+      <Name>ZooRestaurant.Web.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Web\ZooRestaurant.Web.Models\ZooRestaurant.Web.Models.csproj">
+      <Project>{AFC956F7-052D-446B-A7CB-DF211EAC5CA5}</Project>
+      <Name>ZooRestaurant.Web.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,18 +1,10 @@
 ﻿namespace ZooRestaurant.Data.Models
 {
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using Web.Common.Constants;
 
     public class Meal
     {
-        private ICollection<Image> images;
-
-        public Meal()
-        {
-            this.images = new HashSet<Image>();
-        }
-
         [Key]
         public int Id { get; set; }
 
@@ -30,10 +22,6 @@
 
         public virtual MealCategory Category { get; set; }
 
-        public virtual ICollection<Image> Images
-        {
-            get { return this.images; }
-            set { this.images = value; }
-        }
+        public virtual Image Image { get; set; }
     }
 }

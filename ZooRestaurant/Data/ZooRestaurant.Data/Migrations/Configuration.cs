@@ -67,11 +67,7 @@ namespace ZooRestaurant.Data.Migrations
             foreach (var meal in meals)
             {
                 meal.CategoryId = mealCategory.Id;
-
-                foreach (var mealImage in meal.Images)
-                {
-                    mealImage.Content = File.ReadAllBytes(PathHelper.MapPath(mealImage.UrlPath, assembly));
-                }
+                    meal.Image.Content = File.ReadAllBytes(PathHelper.MapPath(meal.Image.UrlPath, assembly));
             }
 
             this.context.Meals.AddOrUpdate(m => m.Name, meals);

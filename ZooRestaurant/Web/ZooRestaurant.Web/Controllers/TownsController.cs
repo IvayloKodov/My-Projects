@@ -2,6 +2,7 @@
 {
     using System.Linq;
     using System.Web.Mvc;
+    using Base;
     using Infrastructure.Mapping.Extensions;
     using Models.ViewModels.Address;
     using Services.Data.Contracts;

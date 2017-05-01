@@ -8,7 +8,7 @@
         //Meals Search
         public static IQueryable<Meal> Search(this IQueryable<Meal> collection, string query)
         {
-            if (query == null)
+            if (string.IsNullOrEmpty(query))
             {
                 return collection;
             }

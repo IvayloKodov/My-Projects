@@ -25,19 +25,13 @@ namespace ZooRestaurant.Data
 
         public virtual IDbSet<Image> Images { get; set; }
 
+        public virtual IDbSet<ShoppingCart> ShoppingCarts { get; set; }
+
+        public virtual IDbSet<Cart> Carts { get; set; }
+
         public static ZooRestaurantContext Create()
         {
             return new ZooRestaurantContext();
-        }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<ShoppingCart>()
-                        .HasRequired(s => s.Customer)
-                        .WithRequiredDependent(c => c.ShoppingCart)
-                        .WillCascadeOnDelete(false);
-
-            base.OnModelCreating(modelBuilder);
         }
     }
 }

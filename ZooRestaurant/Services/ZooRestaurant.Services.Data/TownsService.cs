@@ -2,6 +2,7 @@
 {
     using System;
     using System.Linq;
+    using Base;
     using Contracts;
     using ZooRestaurant.Data.Common.Repositories;
     using ZooRestaurant.Data.Models.AddressModels;

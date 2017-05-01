@@ -4,6 +4,8 @@
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
+    using Base;
+    using Common.Constants;
     using Data.Models;
     using Data.Models.AddressModels;
     using Microsoft.AspNet.Identity;
@@ -55,7 +57,7 @@
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var user = this.userManager.FindByEmail(model.Email);
-            var result = await this.signInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await this.signInManager.PasswordSignInAsync(user == null ? string.Empty : user.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -143,6 +145,7 @@
                 var result = await this.userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    this.userManager.AddToRole(user.Id, RolesType.Customer);
                     await this.signInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                     var customer = new Customer()
                     {
@@ -152,9 +155,9 @@
                         {
                             AdditionalAddress = model.AdditionalAddress,
                             NeighborhoodId = model.NeighborhoodId
-                        }
+                        },
+                        ShoppingCart = new ShoppingCart()
                     };
-
                     this.customers.Add(customer);
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link

@@ -1,4 +1,4 @@
-﻿namespace ZooRestaurant.Web.Common.Enums.Meals
+﻿namespace ZooRestaurant.Web.Common.Enums
 {
     using System.ComponentModel.DataAnnotations;
 

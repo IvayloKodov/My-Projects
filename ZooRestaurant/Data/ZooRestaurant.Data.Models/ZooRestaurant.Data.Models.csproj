@@ -67,6 +67,7 @@
     <Compile Include="Image.cs" />
     <Compile Include="Meal.cs" />
     <Compile Include="MealCategory.cs" />
+    <Compile Include="Message.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

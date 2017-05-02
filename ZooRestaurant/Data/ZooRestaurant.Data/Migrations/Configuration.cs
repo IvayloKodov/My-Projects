@@ -12,7 +12,7 @@ namespace ZooRestaurant.Data.Migrations
     using Models.AddressModels;
     using Newtonsoft.Json;
     using Web.Common.Constants;
-    using Web.Common.Enums.Meals;
+    using Web.Common.Enums;
     using Web.Common.Extensions;
     using Web.Common.Helpers;
 

@@ -8,5 +8,9 @@
 
         //Meal
         public const int MaxMealNameLength = 200;
+
+        //Message
+        public const int MaxContactNameLength = 100;
+        public const int MaxMessageContentLength = 1000;
     }
 }

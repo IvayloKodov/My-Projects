@@ -4,7 +4,7 @@
     using System.Linq;
     using Base;
     using Contracts;
-    using Web.Common.Enums.Meals;
+    using Web.Common.Enums;
     using Web.Common.Extensions;
     using ZooRestaurant.Data.Common.Repositories;
     using ZooRestaurant.Data.Models;

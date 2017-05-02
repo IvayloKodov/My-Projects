@@ -11,7 +11,7 @@
     using Models.ViewModels.ShoppingCart;
     using Services.Data.Contracts;
 
-    [MyAuthorize(Roles = "Customer")]
+    [Authorize(Roles = "Customer")]
     public class ShoppingCartController : BaseController
     {
         private readonly IShoppingCartService shoppingCartService;
@@ -24,6 +24,7 @@
             this.meals = meals;
         }
 
+        [HttpPost]
         [Route("ShoppingCart/Add/{mealId}")]
         public ActionResult Add(int mealId)
         {
@@ -87,6 +88,7 @@
             return this.RedirectToAction("SuccessfulOrder");
         }
 
+        [HttpGet]
         public ActionResult SuccessfulOrder()
         {
             return this.View();

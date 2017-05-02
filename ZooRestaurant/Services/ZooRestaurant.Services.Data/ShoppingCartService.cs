@@ -80,7 +80,10 @@
 
         private void CleanShoppingCart(ShoppingCart customerShoppingCart)
         {
-            var cartsIds = customerShoppingCart.Carts.Select(c => c.Id).ToList();
+            var cartsIds = customerShoppingCart
+                                            .Carts
+                                            .Select(c => c.Id)
+                                            .ToList();
 
             foreach (var cartId in cartsIds)
             {

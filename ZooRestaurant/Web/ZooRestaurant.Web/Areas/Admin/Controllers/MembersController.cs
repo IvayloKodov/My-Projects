@@ -11,7 +11,7 @@
         [Route("Admin/Members")]
         public ActionResult Members()
         {
-            return this.View();
+            return null;
         }
     }
 }

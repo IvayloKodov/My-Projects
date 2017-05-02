@@ -91,10 +91,9 @@
     <Compile Include="Constants\ValidationConstants.cs" />
     <Compile Include="Constants\ViewConstants.cs" />
     <Compile Include="Enums\MessageSubjectType.cs" />
-    <Compile Include="Extensions\QueryableExtensions.cs" />
+    <Compile Include="Helpers\EnumExtensions.cs" />
     <Compile Include="Helpers\EnumUtil.cs" />
     <Compile Include="Enums\MealCategoryEnType.cs" />
-    <Compile Include="Extensions\EnumExtensions.cs" />
     <Compile Include="Helpers\PathHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -103,10 +102,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Data\ZooRestaurant.Data.Models\ZooRestaurant.Data.Models.csproj">
-      <Project>{FDAFE732-CECF-4059-9235-97E49CD0811B}</Project>
-      <Name>ZooRestaurant.Data.Models</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ZooRestaurant.Web.Infrastructure\ZooRestaurant.Web.Infrastructure.csproj">
       <Project>{03870199-2579-431E-8876-610F302E110C}</Project>
       <Name>ZooRestaurant.Web.Infrastructure</Name>

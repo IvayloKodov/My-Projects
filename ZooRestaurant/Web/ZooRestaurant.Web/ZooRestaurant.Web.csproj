@@ -229,6 +229,7 @@
     <Compile Include="Controllers\TownsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\User\ManageController.cs" />
+    <Compile Include="Extensions\QueryableExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

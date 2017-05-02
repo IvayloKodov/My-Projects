@@ -4,7 +4,7 @@
     using System.Web.Mvc;
     using Base;
     using Common.Constants;
-    using Common.Extensions;
+    using Extensions;
     using Infrastructure.Mapping.Extensions;
     using Models.ViewModels.Meals;
     using PagedList;

@@ -1,4 +1,4 @@
-﻿namespace ZooRestaurant.Web.Common.Extensions
+﻿namespace ZooRestaurant.Web.Common.Helpers
 {
     using System;
     using System.ComponentModel.DataAnnotations;

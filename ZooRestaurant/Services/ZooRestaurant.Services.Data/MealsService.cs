@@ -5,7 +5,7 @@
     using Base;
     using Contracts;
     using Web.Common.Enums;
-    using Web.Common.Extensions;
+    using Web.Common.Helpers;
     using ZooRestaurant.Data.Common.Repositories;
     using ZooRestaurant.Data.Models;
 

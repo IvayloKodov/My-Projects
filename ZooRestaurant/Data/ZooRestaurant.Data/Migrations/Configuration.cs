@@ -13,7 +13,6 @@ namespace ZooRestaurant.Data.Migrations
     using Newtonsoft.Json;
     using Web.Common.Constants;
     using Web.Common.Enums;
-    using Web.Common.Extensions;
     using Web.Common.Helpers;
 
     public sealed class Configuration : DbMigrationsConfiguration<ZooRestaurantContext>

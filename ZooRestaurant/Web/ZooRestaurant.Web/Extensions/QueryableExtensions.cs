@@ -1,4 +1,4 @@
-﻿namespace ZooRestaurant.Web.Common.Extensions
+﻿namespace ZooRestaurant.Web.Extensions
 {
     using System.Linq;
     using Data.Models;

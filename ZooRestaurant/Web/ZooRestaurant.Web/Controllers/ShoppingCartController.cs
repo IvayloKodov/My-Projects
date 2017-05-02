@@ -2,7 +2,6 @@
 {
     using System.Linq;
     using System.Web.Mvc;
-    using Attributes;
     using Base;
     using Data.Common.Repositories;
     using Data.Models;
@@ -11,7 +10,6 @@
     using Models.ViewModels.ShoppingCart;
     using Services.Data.Contracts;
 
-    [Authorize(Roles = "Customer")]
     public class ShoppingCartController : BaseController
     {
         private readonly IShoppingCartService shoppingCartService;

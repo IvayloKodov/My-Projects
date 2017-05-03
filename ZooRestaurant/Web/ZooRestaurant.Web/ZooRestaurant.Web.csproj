@@ -315,6 +315,10 @@
     <Content Include="Areas\Admin\Views\Messages\Inbox.cshtml" />
     <Content Include="Areas\Admin\Views\Messages\_MessagePartialView.cshtml" />
     <Content Include="Areas\Admin\Views\Messages\Read.cshtml" />
+    <Content Include="Areas\Admin\Views\Members\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Members\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Members\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Members\Index.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\Custom\ChangeTownNeigborhoods.js" />
     <Content Include="Scripts\Custom\ThumbnailHeightEquilzer.js" />
@@ -417,7 +421,6 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Admin\Views\Members\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
   </ItemGroup>
   <PropertyGroup>

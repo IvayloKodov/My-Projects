@@ -24,8 +24,9 @@
             this.meals = meals;
         }
         
-
-        [Route("ShoppingCart/Add/{mealId}")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Route("ShoppingCart/Add")]
         public ActionResult Add(int mealId)
         {
             var meal = this.meals.GetById(mealId);
@@ -36,6 +37,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         [Route("ShoppingCart/Remove")]
         public ActionResult Remove(int id)
         {

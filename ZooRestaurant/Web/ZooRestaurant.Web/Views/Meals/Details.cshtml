@@ -28,7 +28,12 @@
                 <a href="@Request.UrlReferrer" class="btn btn-danger"><i class="fa fa-arrow-circle-left"></i> Назад</a>
             </div>
             <div class="col-md-8">
-                <a href="/ShoppingCart/Add/@Model.Id" class="btn btn-danger">ДОБАВИ В КОЛИЧКАТА<i class="fa fa-shopping-cart"></i></a>
+                @using (Html.BeginForm("Add", "ShoppingCart", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" value="@Model.Id" name="mealId" />
+                    <button type="submit" class="btn btn-danger pull-right">ДОБАВИ В КОЛИЧКАТА<i class="fa fa-shopping-cart"></i></button>
+                }
             </div>
         </div>
     </div>

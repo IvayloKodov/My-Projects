@@ -12,11 +12,22 @@
                 <img src="@Url.Action("GetImage","Images",new {id=@mealViewModel.Id})" alt="meal.png">
                 <div class="caption">
                     <h4>@mealViewModel.Name</h4>
-                    <p>
-                        <a style="font-size: 1.4em"><strong>@mealViewModel.Price лв.</strong></a>
-                        <a href="/ShoppingCart/Add/@mealViewModel.Id" class="btn btn-danger pull-right">Добави<i class="fa fa-shopping-cart"></i></a>
-                        <a href="/Meals/@mealViewModel.Id/Details" class="btn btn-danger pull-right">Детайли<i class="fa fa-arrow-circle-right"></i></a>
-                    </p>
+                    @using (Html.BeginForm("Add", "ShoppingCart", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" value="@mealViewModel.Id" name="mealId" />
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <span style="font-size: 1.2em"><strong>@mealViewModel.Price лв.</strong></span>
+                            </div>
+                            <div class="col-md-8">
+                                <button type="submit" class="btn btn-danger pull-right">Добави<i class="fa fa-shopping-cart"></i></button>
+                                <a href="/Meals/@mealViewModel.Id/Details" class="btn btn-danger pull-right">Детайли<i class="fa fa-arrow-circle-right"></i></a>
+
+                            </div>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
@@ -24,7 +35,7 @@
         if (counter++ % 3 == 0)
         {
             @:</div>
-                @:<div class="row row-eq-height">
+            @:<div class="row row-eq-height">
         }
     }
 </div>

@@ -50,6 +50,7 @@
                             <td class="col-sm-1 col-md-1">
                                 @using (@Html.BeginForm("Remove", "ShoppingCart", FormMethod.Post))
                                 {
+                                    @Html.AntiForgeryToken()
                                     <input type="hidden" name="id" value="@mealCartViewModel.Id" />
                                     <input type="submit" value="Изтрий" class="btn btn-danger" />
                                 }

@@ -49,5 +49,11 @@
 
             return this.RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult Delivery()
+        {
+            return this.View();
+        }
     }
 }

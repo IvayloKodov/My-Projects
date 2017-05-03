@@ -2,6 +2,7 @@
 {
     using System.Web.Mvc;
 
+    
     public class AdminAreaRegistration : AreaRegistration
     {
         public override string AreaName => "Admin";

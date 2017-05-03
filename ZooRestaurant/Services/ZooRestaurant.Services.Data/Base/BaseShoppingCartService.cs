@@ -18,12 +18,19 @@
         {
             this.carts = carts;
             this.shoppingCarts = shoppingCarts;
-
-            var currentUserId = HttpContext.Current.User.Identity.GetUserId();
-            this.ShoppingCart = shoppingCarts.All().First(s => s.Customer.UserId == currentUserId);
         }
 
-        public ShoppingCart ShoppingCart { get; private set; }
+        public ShoppingCart ShoppingCart
+        {
+            get
+            {
+                var currentUserId = HttpContext.Current.User.Identity.GetUserId();
+
+                return this.shoppingCarts
+                           .All()
+                           .First(s => s.Customer.UserId == currentUserId);
+            }
+        }
 
 
         public void Add(Meal meal)

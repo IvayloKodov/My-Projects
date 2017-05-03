@@ -2,6 +2,7 @@
 {
     using System.Linq;
     using System.Web.Mvc;
+    using Attributes;
     using Base;
     using Data.Common.Repositories;
     using Data.Models;
@@ -10,6 +11,7 @@
     using Models.ViewModels.ShoppingCart;
     using Services.Data.Contracts;
 
+    [MyAuthorize(Roles = "Customer")]
     public class ShoppingCartController : BaseController
     {
         private readonly IShoppingCartService shoppingCartService;
@@ -21,8 +23,8 @@
             this.shoppingCartService = shoppingCartService;
             this.meals = meals;
         }
+        
 
-        [HttpPost]
         [Route("ShoppingCart/Add/{mealId}")]
         public ActionResult Add(int mealId)
         {

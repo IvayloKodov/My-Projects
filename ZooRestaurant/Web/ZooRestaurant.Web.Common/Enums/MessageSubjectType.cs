@@ -13,7 +13,10 @@
         [Display(Name = "Предложения")]
         Suggestions = 2,
 
+        [Display(Name = "Похвали")]
+        Compliment = 3,
+
         [Display(Name = "Друго")]
-        ProductSupport = 3
+        ProductSupport = 4
     }
 }

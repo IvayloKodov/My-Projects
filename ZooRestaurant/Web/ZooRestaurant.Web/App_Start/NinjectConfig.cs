@@ -44,7 +44,7 @@ namespace ZooRestaurant.Web
         /// </summary>
         /// <returns>The created kernel.</returns>
         private static IKernel CreateKernel()
-        {
+        { 
             var kernel = new StandardKernel();
             try
             {

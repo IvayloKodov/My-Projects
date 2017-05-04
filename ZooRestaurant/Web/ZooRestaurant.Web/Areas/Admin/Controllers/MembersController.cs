@@ -102,32 +102,6 @@
             return this.View("Details", this.Mapper.Map<UserViewModel>(userDb));
         }
 
-        // GET: Admin/Members/Delete/5
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = this.users.GetById(id);
-            if (user == null)
-            {
-                return this.HttpNotFound();
-            }
-            return this.View(user);
-        }
-
-        // POST: Admin/Members/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            User user = this.users.GetById(id);
-            this.users.Delete(user);
-            this.users.SaveChanges();
-            return this.RedirectToAction("Index");
-        }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

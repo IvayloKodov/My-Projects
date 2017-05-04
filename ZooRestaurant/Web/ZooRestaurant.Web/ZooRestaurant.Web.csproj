@@ -315,7 +315,6 @@
     <Content Include="Areas\Admin\Views\Messages\Inbox.cshtml" />
     <Content Include="Areas\Admin\Views\Messages\_MessagePartialView.cshtml" />
     <Content Include="Areas\Admin\Views\Messages\Read.cshtml" />
-    <Content Include="Areas\Admin\Views\Members\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Members\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Members\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Members\Index.cshtml" />

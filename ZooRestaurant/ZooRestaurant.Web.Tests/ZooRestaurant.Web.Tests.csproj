@@ -97,8 +97,11 @@
   <ItemGroup>
     <Compile Include="Controllers\ImagesControllerTests.cs" />
     <Compile Include="Controllers\MealsControllerTests.cs" />
+    <Compile Include="Controllers\MenuControllerTests.cs" />
+    <Compile Include="Controllers\ShoppingCartControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\Repositories.cs" />
+    <Compile Include="MockRepositories\Repositories.cs" />
+    <Compile Include="Services\MealsServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -118,6 +121,10 @@
     <ProjectReference Include="..\Services\ZooRestaurant.Services.Data\ZooRestaurant.Services.Data.csproj">
       <Project>{65DB6371-8C19-46B2-A286-2760621C8AB0}</Project>
       <Name>ZooRestaurant.Services.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Web\ZooRestaurant.Web.Common\ZooRestaurant.Web.Common.csproj">
+      <Project>{40f01272-070a-4498-ad55-f7914f82eb48}</Project>
+      <Name>ZooRestaurant.Web.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Web\ZooRestaurant.Web.Infrastructure\ZooRestaurant.Web.Infrastructure.csproj">
       <Project>{03870199-2579-431E-8876-610F302E110C}</Project>

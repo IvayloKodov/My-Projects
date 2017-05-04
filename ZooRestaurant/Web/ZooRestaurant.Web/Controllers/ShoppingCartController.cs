@@ -1,6 +1,7 @@
 ﻿namespace ZooRestaurant.Web.Controllers
 {
     using System.Linq;
+    using System.Net;
     using System.Web.Mvc;
     using Attributes;
     using Base;
@@ -23,13 +24,18 @@
             this.shoppingCartService = shoppingCartService;
             this.meals = meals;
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("ShoppingCart/Add")]
         public ActionResult Add(int mealId)
         {
             var meal = this.meals.GetById(mealId);
+
+            if (meal == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
 
             this.shoppingCartService.Add(meal);
 

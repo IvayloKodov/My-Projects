@@ -1,6 +1,7 @@
 ﻿namespace ZooRestaurant.Web.Controllers
 {
-    using System.Web;
+    using System.Net;
+    using System.Text;
     using System.Web.Mvc;
     using Data.Common.Repositories;
     using Data.Models;
@@ -22,7 +23,7 @@
 
             if (image == null)
             {
-                throw new HttpException(404, "Image not found!");
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
 
             return this.File(image.Content, "image/" + image.FileExtension);

@@ -1,6 +1,5 @@
 ﻿namespace ZooRestaurant.Web.Controllers
 {
-    using System;
     using System.Web.Mvc;
     using Base;
     using Data.Common.Repositories;
@@ -18,13 +17,6 @@
 
         public ActionResult Index()
         {
-            return this.View();
-        }
-
-        public ActionResult About()
-        {
-            this.ViewBag.Message = "Your application description page.";
-
             return this.View();
         }
 

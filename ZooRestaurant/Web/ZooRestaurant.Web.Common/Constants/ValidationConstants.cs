@@ -12,5 +12,11 @@
         //Message
         public const int MaxContactNameLength = 100;
         public const int MaxMessageContentLength = 1000;
+
+        //Customer
+        public const int MaxCommentLength = 100;
+
+        //Category
+        public const int MaxLengthCategoryName = 100;
     }
 }

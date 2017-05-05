@@ -4,6 +4,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using AddressModels;
+    using Web.Common.Constants;
 
     public class Customer
     {
@@ -17,6 +18,7 @@
         [Key]
         public int Id { get; set; }
 
+        [StringLength(ValidationConstants.MaxCommentLength)]
         public string Comment { get; set; }
 
         public int DeliveryAddressId { get; set; }

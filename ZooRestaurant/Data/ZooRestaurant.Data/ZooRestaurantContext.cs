@@ -30,6 +30,8 @@ namespace ZooRestaurant.Data
 
         public virtual IDbSet<Message> Messages { get; set; }
 
+        public virtual IDbSet<Order> Orders { get; set; }
+
         public static ZooRestaurantContext Create()
         {
             return new ZooRestaurantContext();

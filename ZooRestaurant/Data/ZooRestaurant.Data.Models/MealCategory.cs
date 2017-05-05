@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using Web.Common.Constants;
 
     public class MealCategory
     {
@@ -15,7 +16,7 @@
         [Key]
         public int Id { get; set; }
 
-        [StringLength(100)]
+        [StringLength(ValidationConstants.MaxLengthCategoryName)]
         public string Name { get; set; }
 
         public virtual ICollection<Meal> Meals

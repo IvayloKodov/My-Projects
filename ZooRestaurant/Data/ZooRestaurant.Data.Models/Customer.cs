@@ -16,7 +16,8 @@
         }
 
         [Key]
-        public int Id { get; set; }
+        [ForeignKey("User")]
+        public string Id { get; set; }
 
         [StringLength(ValidationConstants.MaxCommentLength)]
         public string Comment { get; set; }
@@ -26,9 +27,6 @@
         [ForeignKey("DeliveryAddressId")]
         public virtual Address DeliveryAddress { get; set; }
 
-        public string UserId { get; set; }
-
-        [ForeignKey("UserId")]
         public virtual User User { get; set; }
 
         public virtual ShoppingCart ShoppingCart { get; set; }

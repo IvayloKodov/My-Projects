@@ -2,24 +2,26 @@
 {
     using System.Web.Mvc;
     using Base;
-    using Data.Common.Repositories;
     using Data.Models;
     using Models.ViewModels.Messages;
+    using Services.Data.Contracts;
 
     public class HomeController : BaseController
     {
-        private readonly IRepository<Message> messages;
+        private readonly IMessagesService messages;
 
-        public HomeController(IRepository<Message> messages)
+        public HomeController(IMessagesService messages)
         {
             this.messages = messages;
         }
 
+        [HttpGet]
         public ActionResult Index()
         {
             return this.View();
         }
 
+        [HttpGet]
         public ActionResult Contact()
         {
             this.ViewBag.Message = "Your contact page.";
@@ -36,7 +38,7 @@
             {
                 var message = this.Mapper.Map<Message>(model);
                 this.messages.Add(message);
-                this.messages.SaveChanges();
+                this.messages.Save();
             }
 
             return this.RedirectToAction("Index");

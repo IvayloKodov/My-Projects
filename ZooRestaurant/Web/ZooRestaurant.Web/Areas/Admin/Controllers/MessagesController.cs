@@ -1,21 +1,20 @@
 ﻿namespace ZooRestaurant.Web.Areas.Admin.Controllers
 {
-    using System.Linq;
     using System.Net;
     using System.Web.Mvc;
     using Attributes;
-    using Data.Common.Repositories;
-    using Data.Models;
-    using Infrastructure.Mapping.Extensions;
     using Models.ViewModels.Messages;
+    using Services.Data.Contracts;
     using Web.Controllers.Base;
+    using System.Linq;
+    using Infrastructure.Mapping.Extensions;
 
     [MyAuthorize(Roles = "Admin, Dispatcher")]
     public class MessagesController : BaseController
     {
-        private readonly IRepository<Message> messages;
+        private readonly IMessagesService messages;
 
-        public MessagesController(IRepository<Message> messages)
+        public MessagesController(IMessagesService messages)
         {
             this.messages = messages;
         }
@@ -24,9 +23,20 @@
         [Route("Admin/Messages")]
         public ActionResult Inbox()
         {
-            var readedMessages = this.messages.All().Where(m => m.IsRead).To<MessagePartViewModel>();
-            var unReadedMessages = this.messages.All().Where(m => !m.IsRead).To<MessagePartViewModel>();
+            var readedMessages = this.messages
+                                     .GetAll()
+                                     .Where(m => m.IsRead)
+                                     .To<MessagePartViewModel>()
+                                     .ToList();
+
+            var unReadedMessages = this.messages
+                                       .GetAll()
+                                       .Where(m => !m.IsRead)
+                                       .To<MessagePartViewModel>()
+                                       .ToList();
+
             var messagesBox = new MessageBoxViewModel { ReadedMessages = readedMessages, UnreadedMessages = unReadedMessages };
+
             return this.View(messagesBox);
         }
 
@@ -37,11 +47,11 @@
             var message = this.messages.GetById(id);
             if (message == null)
             {
-                this.Response.StatusCode = (int)HttpStatusCode.NotFound;
-                return this.Content("Meal not found");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             message.IsRead = true;
-            this.messages.SaveChanges();
+            this.messages.Save();
 
             var messageVm = this.Mapper.Map<MessageViewModel>(message);
 
@@ -51,7 +61,9 @@
         [ChildActionOnly]
         public int MessagesCount()
         {
-            return this.messages.All().Count(m => !m.IsRead);
+            return this.messages
+                       .GetAll()
+                       .Count(m => !m.IsRead);
         }
     }
 }

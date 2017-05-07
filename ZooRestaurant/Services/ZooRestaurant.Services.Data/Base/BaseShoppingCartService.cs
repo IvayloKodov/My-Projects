@@ -12,12 +12,15 @@
     {
         private readonly IRepository<ShoppingCart> shoppingCarts;
         private readonly IRepository<Cart> carts;
+        private readonly IRepository<Meal> meals;
 
         protected BaseShoppingCartService(IRepository<ShoppingCart> shoppingCarts,
-                                          IRepository<Cart> carts)
+                                          IRepository<Cart> carts,
+                                          IRepository<Meal> meals)
         {
             this.carts = carts;
             this.shoppingCarts = shoppingCarts;
+            this.meals = meals;
         }
 
         public ShoppingCart ShoppingCart
@@ -28,13 +31,19 @@
 
                 return this.shoppingCarts
                            .All()
-                           .First(s => s.Customer.UserId == currentUserId);
+                           .First(s => s.Customer.User.Id == currentUserId);
             }
         }
 
 
-        public void Add(Meal meal)
+        public bool Add(int mealId)
         {
+            var meal = this.meals.GetById(mealId);
+            if (meal == null)
+            {
+                return false;
+            }
+
             var sameMealInCart = this.GetAll().FirstOrDefault(c => c.Name == meal.Name);
 
             if (sameMealInCart == null)
@@ -54,6 +63,7 @@
             }
 
             this.Save();
+            return true;
         }
 
         public void Remove(int id)

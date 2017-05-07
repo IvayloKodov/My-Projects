@@ -3,44 +3,44 @@
     using System.Linq;
     using System.Net;
     using System.Web.Mvc;
-    using Data.Common.Repositories;
+    using Attributes;
     using Infrastructure.Mapping.Extensions;
-    using Microsoft.AspNet.Identity.EntityFramework;
     using Models.ViewModels.Users;
+    using Services.Data.Contracts;
     using Web.Controllers.Base;
-    using WebGrease.Css.Extensions;
-    using ZooRestaurant.Data.Models;
+    using Data.Models;
 
+    [MyAuthorize(Roles = "Admin")]
     public class MembersController : BaseController
     {
-        private readonly IRepository<User> users;
-        private readonly IRepository<IdentityRole> roles;
+        private readonly IMembersService members;
 
-        public MembersController(IRepository<User> users, IRepository<IdentityRole> roles)
+        public MembersController(IMembersService members)
         {
-            this.users = users;
-            this.roles = roles;
+            this.members = members;
         }
 
-        // GET: Admin/Members
+        // Admin/Members
+        [HttpGet]
         public ActionResult Index()
         {
-            var usersVms = this.users
-                .All()
-                .To<UserViewModel>()
-                .ToList();
+            var usersVms = this.members
+                               .GetAll()
+                               .To<UserViewModel>()
+                               .ToList();
 
             return this.View(usersVms);
         }
 
-        // GET: Admin/Members/Details/5
+        // Admin/Members/Details/5
+        [HttpGet]
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = this.users.GetById(id);
+            User user = this.members.GetById(id);
 
             if (user == null)
             {
@@ -51,34 +51,18 @@
             return this.View(userVm);
         }
 
-        // GET: Admin/Members/Edit/5
+        // Admin/Members/Edit/5
+        [HttpGet]
         public ActionResult Edit(string id)
         {
-            if (id == null)
+            User user = this.members.GetById(id);
+
+            if (id == null || user == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = this.users.GetById(id);
 
-            if (user == null)
-            {
-                return this.HttpNotFound();
-            }
-            var rolesListItems = this.roles
-                                .All()
-                                .ToList()
-                                .Select(r => new SelectListItem()
-                                {
-                                    Value = r.Id,
-                                    Text = r.Name
-                                })
-                                .ToList();
-
-            if (rolesListItems.Any())
-            {
-                var userRolesIds = user.Roles.Select(r => r.RoleId);
-                rolesListItems.Where(s => userRolesIds.Contains(s.Value)).ForEach(s => s.Selected = true);
-            }
+            var rolesListItems = this.members.GetAllUserRoles(user);
 
             var userVm = this.Mapper.Map<UserEditViewModel>(user);
             userVm.Roles = rolesListItems;
@@ -91,12 +75,12 @@
         [ValidateAntiForgeryToken]
         public ActionResult Edit(UserEditViewModel model)
         {
-            var userDb = this.users.GetById(model.Id);
+            var userDb = this.members.GetById(model.Id);
 
             if (this.ModelState.IsValid && userDb != null)
             {
                 this.Mapper.Map(model, userDb);
-                this.users.SaveChanges();
+                this.members.Save();
             }
 
             return this.View("Details", this.Mapper.Map<UserViewModel>(userDb));
@@ -106,7 +90,7 @@
         {
             if (disposing)
             {
-                this.users.Dispose();
+                this.members.Dispose();
             }
             base.Dispose(disposing);
         }

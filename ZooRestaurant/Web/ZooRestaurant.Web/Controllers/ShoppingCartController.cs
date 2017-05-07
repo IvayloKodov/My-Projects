@@ -5,8 +5,6 @@
     using System.Web.Mvc;
     using Attributes;
     using Base;
-    using Data.Common.Repositories;
-    using Data.Models;
     using Infrastructure.Mapping.Extensions;
     using Models.ViewModels.Account;
     using Models.ViewModels.ShoppingCart;
@@ -16,28 +14,23 @@
     public class ShoppingCartController : BaseController
     {
         private readonly IShoppingCartService shoppingCartService;
-        private readonly IRepository<Meal> meals;
 
-        public ShoppingCartController(IShoppingCartService shoppingCartService,
-                                      IRepository<Meal> meals)
+        public ShoppingCartController(IShoppingCartService shoppingCartService)
         {
             this.shoppingCartService = shoppingCartService;
-            this.meals = meals;
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         [Route("ShoppingCart/Add")]
+        [ValidateAntiForgeryToken]
         public ActionResult Add(int mealId)
         {
-            var meal = this.meals.GetById(mealId);
+            var mealExists = this.shoppingCartService.Add(mealId);
 
-            if (meal == null)
+            if (!mealExists)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
-
-            this.shoppingCartService.Add(meal);
 
             return this.RedirectToAction("Dishes", "Menu");
         }

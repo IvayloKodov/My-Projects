@@ -10,6 +10,7 @@
     using Moq;
     using TestStack.FluentMVCTesting;
     using Web.Controllers;
+    using ZooRestaurant.Services.Data.Contracts;
 
     [TestClass]
     public class ImagesControllerTests
@@ -19,7 +20,7 @@
         {
             byte[] content = { 129, 130, 131 };
 
-            var repositoryMock = new Mock<IRepository<Image>>();
+            var repositoryMock = new Mock<IImagesService>();
             repositoryMock.Setup(x => x.GetById(It.IsAny<int>()))
                 .Returns(new Image()
                 {

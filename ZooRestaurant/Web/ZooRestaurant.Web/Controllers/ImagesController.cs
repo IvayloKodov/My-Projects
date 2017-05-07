@@ -1,21 +1,20 @@
 ﻿namespace ZooRestaurant.Web.Controllers
 {
     using System.Net;
-    using System.Text;
     using System.Web.Mvc;
-    using Data.Common.Repositories;
     using Data.Models;
+    using Services.Data.Contracts;
 
     [RoutePrefix("Images")]
     public class ImagesController : Controller
     {
-        private readonly IRepository<Image> images;
+        private readonly IImagesService images;
 
-        public ImagesController(IRepository<Image> images)
+        public ImagesController(IImagesService images)
         {
             this.images = images;
         }
-        
+
         [Route("GetImage")]
         public ActionResult GetImage(int id)
         {

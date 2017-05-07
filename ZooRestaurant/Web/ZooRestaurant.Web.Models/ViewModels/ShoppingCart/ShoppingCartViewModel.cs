@@ -6,9 +6,9 @@
 
     public class ShoppingCartViewModel : IMapFrom<ShoppingCart>
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
-        public int CustomerId { get; set; }
+        public string CustomerId { get; set; }
 
         public IEnumerable<CartViewModel> Carts { get; set; }
     }

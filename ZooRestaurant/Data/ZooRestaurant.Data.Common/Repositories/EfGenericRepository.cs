@@ -6,11 +6,11 @@
 
     public class EfGenericRepository<T> : IRepository<T> where T : class
     {
-        public EfGenericRepository(ZooRestaurantContext context)
+        public EfGenericRepository(DbContext context)
         {
             if (context == null)
             {
-                throw new ArgumentException("An instance of DbContext is required to use this repository.", "context");
+                throw new ArgumentException("An instance of DbContext is required to use this repository.", nameof(context));
             }
 
             this.Context = context;
@@ -19,7 +19,7 @@
 
         protected IDbSet<T> DbSet { get; set; }
 
-        protected ZooRestaurantContext Context { get; set; }
+        protected DbContext Context { get; set; }
 
         public virtual IQueryable<T> All()
         {

@@ -66,7 +66,7 @@ namespace ZooRestaurant.Data.Migrations
             foreach (var meal in meals)
             {
                 meal.CategoryId = mealCategory.Id;
-                    meal.Image.Content = File.ReadAllBytes(PathHelper.MapPath(meal.Image.UrlPath, assembly));
+                meal.Image.Content = File.ReadAllBytes(PathHelper.MapPath(meal.Image.UrlPath, assembly));
             }
 
             this.context.Meals.AddOrUpdate(m => m.Name, meals);
@@ -117,11 +117,21 @@ namespace ZooRestaurant.Data.Migrations
                     LastName = "Kodov",
                     UserName = "Ifaka",
                     PhoneNumber = "0897903353",
-                    Email = "ivo@abv.bg"
+                    Email = "ivo@abv.bg",
+                    Customer = new Customer()
+                    {
+                        Comment = string.Empty,
+                        DeliveryAddress = new Address()
+                        {
+                            AdditionalAddress = "кв.Люлин",
+                            NeighborhoodId = this.context.Neighborhoods.First().Id
+                        },
+                        ShoppingCart = new ShoppingCart()
+                    }
                 };
-
                 userManager.Create(user, "123456");
                 userManager.AddToRole(user.Id, RolesType.Admin);
+                userManager.AddToRole(user.Id, RolesType.Customer);
 
                 this.context.SaveChanges();
             }

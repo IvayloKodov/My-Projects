@@ -10,17 +10,15 @@
 
     public class ShoppingCartService : BaseShoppingCartService, IShoppingCartService
     {
-        private readonly IRepository<Meal> meals;
         private readonly IRepository<Order> orders;
 
         public ShoppingCartService(IRepository<ShoppingCart> shoppingCarts,
                                    IRepository<Cart> carts,
                                    IRepository<Meal> meals,
                                    IRepository<Order> orders)
-            : base(shoppingCarts, carts)
+            : base(shoppingCarts, carts,meals)
         {
             this.orders = orders;
-            this.meals = meals;
         }
 
         public ShoppingCart GetCart => this.ShoppingCart;

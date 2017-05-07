@@ -6,6 +6,7 @@ using ZooRestaurant.Web;
 namespace ZooRestaurant.Web
 {
     using System;
+    using System.Data.Entity;
     using System.Reflection;
     using System.Web;
     using Data;
@@ -67,7 +68,7 @@ namespace ZooRestaurant.Web
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<ZooRestaurantContext>().ToSelf().InRequestScope();
+            kernel.Bind<DbContext>().To<ZooRestaurantContext>().InRequestScope();
 
             kernel.Bind(typeof(IRepository<>)).To(typeof(EfGenericRepository<>));
 

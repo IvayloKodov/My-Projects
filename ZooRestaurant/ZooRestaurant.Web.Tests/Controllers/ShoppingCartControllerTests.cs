@@ -26,14 +26,9 @@
         [TestMethod]
         public void SuccessfulAdd_Should_Redirect()
         {
-            var meal = new Meal() { Name = "asdasd" };
-            var mealsRepository = new Mock<IRepository<Meal>>();
-            mealsRepository.Setup(r => r.GetById(It.IsAny<int>()))
-                .Returns(meal);
-
             var shoppingCartService = new Mock<IShoppingCartService>();
-
-            var controller = new ShoppingCartController(shoppingCartService.Object, mealsRepository.Object);
+            shoppingCartService.Setup(s => s.Add(It.IsAny<int>())).Returns(true);
+            var controller = new ShoppingCartController(shoppingCartService.Object);
 
             controller.WithCallTo(c => c.Add(It.IsAny<int>()))
                 .ShouldRedirectTo<MenuController>(typeof(MenuController).GetMethod("Dishes"));
@@ -48,7 +43,7 @@
 
             var shoppingCartService = new Mock<IShoppingCartService>();
 
-            var controller = new ShoppingCartController(shoppingCartService.Object, mealsRepository.Object);
+            var controller = new ShoppingCartController(shoppingCartService.Object);
 
             controller.WithCallTo(c => c.Add(It.IsAny<int>()))
                 .ShouldGiveHttpStatus(HttpStatusCode.NotFound);

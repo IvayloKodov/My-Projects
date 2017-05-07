@@ -7,7 +7,7 @@
     {
         ShoppingCart ShoppingCart { get; }
 
-        void Add(Meal meal);
+        bool Add(int mealId);
 
         void Remove(int id);
         

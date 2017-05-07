@@ -15,7 +15,7 @@
 
         [Key]
         [ForeignKey("Customer")]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         [Required]
         public virtual Customer Customer { get; set; }

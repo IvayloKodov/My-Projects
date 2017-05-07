@@ -120,8 +120,7 @@
         [AllowAnonymous]
         public ActionResult Register()
         {
-            var towns = this.towns.GetAll().ToList();
-            var registerVm = new RegisterViewModel { Towns = new SelectList(towns, "Id", "Name") };
+            var registerVm = new RegisterViewModel { Towns = new SelectList(this.towns.GetAll().ToList(), "Id", "Name") };
             return this.View(registerVm);
         }
 
@@ -139,26 +138,25 @@
                     LastName = model.LastName,
                     UserName = model.UserName,
                     PhoneNumber = model.Phone,
-                    Email = model.Email
-                };
-
-                var result = await this.userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    this.userManager.AddToRole(user.Id, RolesType.Customer);
-                    await this.signInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                    var customer = new Customer()
+                    Email = model.Email,
+                    Customer = new Customer()
                     {
                         Comment = model.Comment,
-                        UserId = user.Id,
                         DeliveryAddress = new Address()
                         {
                             AdditionalAddress = model.AdditionalAddress,
                             NeighborhoodId = model.NeighborhoodId
                         },
                         ShoppingCart = new ShoppingCart()
-                    };
-                    this.customers.Add(customer);
+                    }
+            };
+
+                var result = await this.userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    this.userManager.AddToRole(user.Id, RolesType.Customer);
+                    await this.signInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

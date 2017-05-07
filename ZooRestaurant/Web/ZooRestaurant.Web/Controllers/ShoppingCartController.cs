@@ -74,7 +74,10 @@
         {
             var customer = this.shoppingCartService.ShoppingCart.Customer;
             var customerVm = this.Mapper.Map<CustomerOrderViewModel>(customer);
-
+            if (this.shoppingCartService.IsEmptyShoppingCart())
+            {
+                return this.RedirectToAction("ViewCart");
+            }
             return this.View(customerVm);
         }
 

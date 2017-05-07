@@ -6,7 +6,7 @@
     using Microsoft.AspNet.Identity.EntityFramework;
     using ZooRestaurant.Data.Models;
 
-    public interface IMembersService : IBaseService<User>
+    public interface IUsersService : IBaseService<User>
     {
         IEnumerable<SelectListItem> GetAllUserRoles(User user);
     }

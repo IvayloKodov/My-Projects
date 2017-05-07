@@ -7,5 +7,7 @@
         void ChangeQuantity(int id, string operation);
 
         void MakeOrder(Customer customer);
+
+        bool IsEmptyShoppingCart();
     }
 }

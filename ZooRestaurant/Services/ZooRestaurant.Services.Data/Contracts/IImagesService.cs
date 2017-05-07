@@ -4,6 +4,6 @@
 
     public interface IImagesService : IBaseService<Image>
     {
-     
+        Image GetDefaultImage();
     }
 }

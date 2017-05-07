@@ -22,11 +22,6 @@
         [StringLength(ValidationConstants.MaxCommentLength)]
         public string Comment { get; set; }
 
-        public int DeliveryAddressId { get; set; }
-
-        [ForeignKey("DeliveryAddressId")]
-        public virtual Address DeliveryAddress { get; set; }
-
         public virtual User User { get; set; }
 
         public virtual ShoppingCart ShoppingCart { get; set; }

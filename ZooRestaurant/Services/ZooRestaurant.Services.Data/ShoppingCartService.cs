@@ -56,7 +56,7 @@
             {
                 Customer = customer,
                 OrderDate = DateTime.Now,
-                Address = customer.DeliveryAddress.ToString(),
+                Address = customer.User.Address.ToString(),
                 DeliveryTax = 2,
                 OrdersDetails = customer
                                         .ShoppingCart
@@ -87,6 +87,11 @@
             {
                 this.Remove(cartId);
             }
+        }
+
+        public bool IsEmptyShoppingCart()
+        {
+            return this.ShoppingCart.Carts.Any();
         }
     }
 }

@@ -10,7 +10,7 @@
 
     public class CustomerOrderViewModel : IMapFrom<Customer>, IHaveCustomMappings
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         [Display(Name = "Име")]
         public string FirstName { get; set; }
@@ -37,7 +37,7 @@
                 .ForMember(cvm => cvm.LastName, opts => opts.MapFrom(c => c.User.LastName))
                 .ForMember(cvm => cvm.PhoneNumber, opts => opts.MapFrom(c => c.User.PhoneNumber))
                 .ForMember(cvm => cvm.Carts, opts => opts.MapFrom(c => c.ShoppingCart.Carts))
-                .ForMember(cvm => cvm.Address, opts => opts.MapFrom(c => c.DeliveryAddress));
+                .ForMember(cvm => cvm.Address, opts => opts.MapFrom(c => c.User.Address));
         }
     }
 }

@@ -2,6 +2,7 @@
 {
     using System.Net;
     using System.Web.Mvc;
+    using Common.Helpers;
     using Data.Models;
     using Services.Data.Contracts;
 
@@ -22,7 +23,8 @@
 
             if (image == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                var defaultImage = this.images.GetDefaultImage();
+                return this.File(defaultImage.Content, "image/" + defaultImage.FileExtension);
             }
 
             return this.File(image.Content, "image/" + image.FileExtension);

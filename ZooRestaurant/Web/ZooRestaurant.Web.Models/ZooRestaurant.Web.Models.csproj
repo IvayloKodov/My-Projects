@@ -98,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IMapping.cs" />
+    <Compile Include="ValidationAttributes\CartSizeAttribute.cs" />
     <Compile Include="ViewModels\Address\AddressViewModel.cs" />
     <Compile Include="ViewModels\Account\CustomerOrderViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
@@ -124,15 +125,14 @@
     <Compile Include="ViewModels\Meals\MealDetailsViewModel.cs" />
     <Compile Include="ViewModels\Meals\MealViewModel.cs" />
     <Compile Include="ViewModels\Messages\MessagePartViewModel.cs" />
+    <Compile Include="ViewModels\Profile\ProfileViewModel.cs" />
     <Compile Include="ViewModels\ShoppingCart\CartItemViewModel.cs" />
     <Compile Include="ViewModels\ShoppingCart\CartViewModel.cs" />
     <Compile Include="ViewModels\ShoppingCart\ShoppingCartViewModel.cs" />
     <Compile Include="ViewModels\Users\UserEditViewModel.cs" />
     <Compile Include="ViewModels\Users\UserViewModel.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BindingModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

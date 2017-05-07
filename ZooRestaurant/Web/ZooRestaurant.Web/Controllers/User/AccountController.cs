@@ -20,20 +20,16 @@
         private ApplicationSignInManager signInManager;
         private ApplicationUserManager userManager;
         private readonly ITownsService towns;
-        private readonly ICustomersService customers;
 
         public AccountController(ApplicationSignInManager signInManager,
                                  ApplicationUserManager userManager,
-                                 ITownsService towns,
-                                 ICustomersService customers)
+                                 ITownsService towns)
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
             this.towns = towns;
-            this.customers = customers;
         }
-
-        //
+        
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -139,14 +135,14 @@
                     UserName = model.UserName,
                     PhoneNumber = model.Phone,
                     Email = model.Email,
+                    Address = new Address()
+                    {
+                        AdditionalAddress = model.AdditionalAddress,
+                        NeighborhoodId = model.NeighborhoodId
+                    },
                     Customer = new Customer()
                     {
                         Comment = model.Comment,
-                        DeliveryAddress = new Address()
-                        {
-                            AdditionalAddress = model.AdditionalAddress,
-                            NeighborhoodId = model.NeighborhoodId
-                        },
                         ShoppingCart = new ShoppingCart()
                     }
             };

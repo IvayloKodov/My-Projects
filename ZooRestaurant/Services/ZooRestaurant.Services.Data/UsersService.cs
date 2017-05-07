@@ -9,11 +9,11 @@
     using ZooRestaurant.Data.Common.Repositories;
     using ZooRestaurant.Data.Models;
 
-    public class MembersService : BaseService<User>, IMembersService
+    public class UsersService : BaseService<User>, IUsersService
     {
         private readonly IRepository<IdentityRole> roles;
 
-        public MembersService(IRepository<User> dataSet, IRepository<IdentityRole> roles)
+        public UsersService(IRepository<User> dataSet, IRepository<IdentityRole> roles)
             : base(dataSet)
         {
             this.roles = roles;

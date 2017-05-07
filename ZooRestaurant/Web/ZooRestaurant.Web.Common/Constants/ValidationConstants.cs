@@ -18,5 +18,8 @@
 
         //Category
         public const int MaxLengthCategoryName = 100;
+
+        //User
+        public const int MaxUserNameLength = 20;
     }
 }

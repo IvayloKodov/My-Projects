@@ -229,6 +229,7 @@
     <Compile Include="Controllers\TownsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\User\ManageController.cs" />
+    <Compile Include="Controllers\User\ProfileController.cs" />
     <Compile Include="Extensions\QueryableExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -280,6 +281,9 @@
     <Content Include="Content\Images\night.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Images\profileImage.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Images\Skin2-white.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -318,6 +322,8 @@
     <Content Include="Areas\Admin\Views\Members\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Members\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Members\Index.cshtml" />
+    <Content Include="Views\Profile\Profile.cshtml" />
+    <Content Include="Views\Profile\EditProfile.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\Custom\ChangeTownNeigborhoods.js" />
     <Content Include="Scripts\Custom\ThumbnailHeightEquilzer.js" />

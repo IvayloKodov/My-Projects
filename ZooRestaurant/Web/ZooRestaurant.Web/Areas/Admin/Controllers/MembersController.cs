@@ -13,9 +13,9 @@
     [MyAuthorize(Roles = "Admin")]
     public class MembersController : BaseController
     {
-        private readonly IMembersService members;
+        private readonly IUsersService members;
 
-        public MembersController(IMembersService members)
+        public MembersController(IUsersService members)
         {
             this.members = members;
         }

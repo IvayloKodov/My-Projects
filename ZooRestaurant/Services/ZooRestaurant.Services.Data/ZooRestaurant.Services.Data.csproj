@@ -91,13 +91,13 @@
     <Compile Include="Contracts\ICustomersService.cs" />
     <Compile Include="Contracts\IImagesService.cs" />
     <Compile Include="Contracts\IMealsService.cs" />
-    <Compile Include="Contracts\IMembersService.cs" />
+    <Compile Include="Contracts\IUsersService.cs" />
     <Compile Include="Contracts\IMessagesService.cs" />
     <Compile Include="Contracts\IShoppingCartService.cs" />
     <Compile Include="CustomersService.cs" />
     <Compile Include="ImagesService.cs" />
     <Compile Include="MealsService.cs" />
-    <Compile Include="MembersService.cs" />
+    <Compile Include="UsersService.cs" />
     <Compile Include="MessagesService.cs" />
     <Compile Include="ShoppingCartService.cs" />
     <Compile Include="TownsService.cs" />

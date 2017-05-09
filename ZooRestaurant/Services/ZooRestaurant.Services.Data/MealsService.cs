@@ -27,9 +27,13 @@
                 return this.GetAll();
             }
 
-            category = ((MealCategoryEnType)Enum.Parse(typeof(MealCategoryEnType), category)).GetDisplayName();
+            if (Enum.IsDefined(typeof(MealCategoryEnType), category))
+            {
+                category = ((MealCategoryEnType)Enum.Parse(typeof(MealCategoryEnType), category)).GetDisplayName();
+                return this.GetAll().Where(m => m.Category.Name == category);
+            }
 
-            return this.GetAll().Where(m => m.Category.Name == category);
+            return this.GetAll();
         }
 
         public IQueryable<MealCategory> Categories()

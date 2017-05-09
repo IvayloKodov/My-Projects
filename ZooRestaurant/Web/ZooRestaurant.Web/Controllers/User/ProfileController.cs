@@ -1,29 +1,25 @@
 ﻿namespace ZooRestaurant.Web.Controllers.User
 {
-    using System.IO;
     using System.Linq;
     using System.Web.Mvc;
     using Base;
-    using Data.Models;
     using Microsoft.AspNet.Identity;
     using Models.ViewModels.Profile;
     using Services.Data.Contracts;
 
+    [Authorize]
     public class ProfileController : BaseController
     {
         private readonly IUsersService users;
         private readonly ITownsService towns;
-        private readonly IImagesService images;
         private readonly IProfileService profile;
 
         public ProfileController(IUsersService users,
                                  ITownsService towns,
-                                 IImagesService images,
                                  IProfileService profile)
         {
             this.users = users;
             this.towns = towns;
-            this.images = images;
             this.profile = profile;
         }
 

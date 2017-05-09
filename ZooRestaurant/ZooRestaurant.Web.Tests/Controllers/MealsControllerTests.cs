@@ -34,7 +34,7 @@
                     Category = new MealCategory() { Name = "Салати" }
                 });
 
-            var controller = new MealsController(mealsServiceMock.Object);
+            var controller = new MealsController(mealsServiceMock.Object,null);
 
             controller.WithCallTo(x => x.Details(123123))
                       .ShouldRenderView("Details")
@@ -56,7 +56,7 @@
             mealsServiceMock.Setup(x => x.GetById(0))
                 .Returns(meal);
 
-            var controller = new MealsController(mealsServiceMock.Object);
+            var controller = new MealsController(mealsServiceMock.Object,null);
 
             controller.WithCallTo(x => x.Details(0))
                 .ShouldGiveHttpStatus(HttpStatusCode.NotFound);

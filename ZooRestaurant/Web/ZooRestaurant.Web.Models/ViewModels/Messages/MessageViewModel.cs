@@ -24,6 +24,7 @@
         public string Email { get; set; }
 
         [Display(Name = "Тема")]
+        [UIHint("Subject")]
         public MessageSubjectType Subject { get; set; }
 
         [Display(Name = "Съобщение")]

@@ -4,31 +4,31 @@
 
     public enum MealCategoryEnType
     {
-        [Display(Name = "Salads")]
+        [Display(Name = "Салати")]
         Salads = 0,
 
-        [Display(Name = "Starters")]
+        [Display(Name = "Предястия")]
         Starters = 1,
 
-        [Display(Name = "Chicken Dishes")]
+        [Display(Name = "Пилешки ястия")]
         ChickenDishes = 2,
 
-        [Display(Name = "Fish Dishes")]
+        [Display(Name = "Рибни ястия")]
         FishDishes = 3,
 
-        [Display(Name = "Pork Dishes")]
+        [Display(Name = "Свински ястия")]
         PorkDishes = 4,
 
-        [Display(Name = "Beaf Dishes")]
+        [Display(Name = "Телешки ястия")]
         BeafDishes = 5,
 
-        [Display(Name = "Garnitures")]
+        [Display(Name = "Гарнитури")]
         Garnitures = 6,
 
-        [Display(Name = "Desserts")]
+        [Display(Name = "Десерти")]
         Desserts = 7,
 
-        [Display(Name = "Sauces")]
+        [Display(Name = "Сосове")]
         Sauces = 8
     }
 }

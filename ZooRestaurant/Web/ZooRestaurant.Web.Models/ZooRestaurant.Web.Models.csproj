@@ -65,6 +65,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
@@ -111,6 +112,7 @@
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModels\Address\NeighborhoodViewModel.cs" />
+    <Compile Include="ViewModels\Meals\AddMealViewModel.cs" />
     <Compile Include="ViewModels\Messages\MessageBoxViewModel.cs" />
     <Compile Include="ViewModels\Messages\MessageViewModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
@@ -125,6 +127,7 @@
     <Compile Include="ViewModels\Meals\MealDetailsViewModel.cs" />
     <Compile Include="ViewModels\Meals\MealViewModel.cs" />
     <Compile Include="ViewModels\Messages\MessagePartViewModel.cs" />
+    <Compile Include="ViewModels\Profile\EditProfileViewModel.cs" />
     <Compile Include="ViewModels\Profile\ProfileViewModel.cs" />
     <Compile Include="ViewModels\ShoppingCart\CartItemViewModel.cs" />
     <Compile Include="ViewModels\ShoppingCart\CartViewModel.cs" />

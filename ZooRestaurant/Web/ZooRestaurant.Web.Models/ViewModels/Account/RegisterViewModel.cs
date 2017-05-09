@@ -3,14 +3,10 @@ namespace ZooRestaurant.Web.Models.ViewModels.Account
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;
+    using Common.Constants;
 
     public class RegisterViewModel 
     {
-        private const int MaxNameLength = 20;
-        private const int MinNameLength = 2;
-        private const int UsernameMinLength = 4;
-        private const int UsernameMaxLength = 20;
-
         public RegisterViewModel()
         {
             this.Neighborhoods = new List<SelectListItem>();
@@ -18,12 +14,12 @@ namespace ZooRestaurant.Web.Models.ViewModels.Account
 
         [Required]
         [Display(Name = "Име")]
-        [StringLength(MaxNameLength, ErrorMessage = "{0}тo трябва да бъде дълга {2} символа!", MinimumLength = MinNameLength)]
+        [StringLength(ValidationConstants.MaxNameLength, ErrorMessage = "{0}тo трябва да бъде дълга {2} символа!", MinimumLength = ValidationConstants.MinNameLength)]
         public string Firstname { get; set; }
 
         [Required]
         [Display(Name = "Фамилия")]
-        [StringLength(MaxNameLength, ErrorMessage = "{0}та трябва да бъде дълга {2} символа!", MinimumLength = MinNameLength)]
+        [StringLength(ValidationConstants.MaxNameLength, ErrorMessage = "{0}та трябва да бъде дълга {2} символа!", MinimumLength = ValidationConstants.UsernameMinLength)]
         public string LastName { get; set; }
 
         [Required]
@@ -32,12 +28,12 @@ namespace ZooRestaurant.Web.Models.ViewModels.Account
         public string Email { get; set; }
 
         [Required]
-        [StringLength(UsernameMaxLength, ErrorMessage = "Името трябва да бъде дълга {2} символа!", MinimumLength = UsernameMinLength)]
+        [StringLength(ValidationConstants.UsernameMaxLength, ErrorMessage = "Името трябва да бъде дълга {2} символа!", MinimumLength = ValidationConstants.UsernameMinLength)]
         [Display(Name = "Потребителско име")]
         public string UserName { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "{0}та трябва да бъде дълга {2} символа!", MinimumLength = 6)]
+        [StringLength(ValidationConstants.PasswordMaxLength, ErrorMessage = "{0}та трябва да бъде дълга {2} символа!", MinimumLength = ValidationConstants.PasswordMinLength)]
         [DataType(DataType.Password)]
         [Display(Name = "Парола")]
         public string Password { get; set; }

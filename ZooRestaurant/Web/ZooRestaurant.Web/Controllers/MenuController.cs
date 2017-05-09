@@ -21,7 +21,7 @@
         }
 
         [HttpGet]
-        [Route("{category?}")]
+        [Route("Dishes/{category?}")]
         public ActionResult Dishes(string category, int page = 1)
         {
             var mealsVm = this.meals

@@ -15,7 +15,6 @@
         }
 
         [Key]
-        [ForeignKey("Meal")]
         public int Id { get; set; }
 
         [Required]
@@ -28,9 +27,9 @@
 
         public virtual Meal Meal { get; set; }
 
-        public string User { get; set; }
+        public string UserId { get; set; }
 
-        public virtual User UserId { get; set; }
+        public virtual User User { get; set; }
 
         public virtual ICollection<Cart> Carts
         {

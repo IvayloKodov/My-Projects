@@ -11,14 +11,18 @@
 
     public class MealsService : BaseService<Meal>, IMealsService
     {
-        public MealsService(IRepository<Meal> dataSet)
+        private readonly IRepository<MealCategory> categories;
+
+        public MealsService(IRepository<Meal> dataSet,
+                            IRepository<MealCategory> categories)
             : base(dataSet)
         {
+            this.categories = categories;
         }
 
         public IQueryable<Meal> MealsByCategory(string category)
         {
-            if (category == null)
+            if (string.IsNullOrEmpty(category))
             {
                 return this.GetAll();
             }
@@ -26,6 +30,11 @@
             category = ((MealCategoryEnType)Enum.Parse(typeof(MealCategoryEnType), category)).GetDisplayName();
 
             return this.GetAll().Where(m => m.Category.Name == category);
+        }
+
+        public IQueryable<MealCategory> Categories()
+        {
+            return this.categories.All();
         }
     }
 }

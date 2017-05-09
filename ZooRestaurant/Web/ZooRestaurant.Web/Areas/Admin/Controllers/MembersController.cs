@@ -22,6 +22,7 @@
 
         // Admin/Members
         [HttpGet]
+        [Route("Admin/Members")]
         public ActionResult Index()
         {
             var usersVms = this.members

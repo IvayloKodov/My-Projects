@@ -91,7 +91,7 @@
 
         public bool IsEmptyShoppingCart()
         {
-            return this.ShoppingCart.Carts.Any();
+            return !this.ShoppingCart.Carts.Any();
         }
     }
 }

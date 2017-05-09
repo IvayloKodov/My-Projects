@@ -33,8 +33,8 @@
                 <ul class="dropdown-menu">
                     @if (User.IsInRole("Admin"))
                     {
-                        <li><a href="/Admin/Messages" ><i class="fa fa-envelope"></i> Messages <span class="badge">@Html.Action("MessagesCount", "Messages")</span></a></li>
-                        <li><a href="/Admin/Members"><i class="fa fa-users"></i> Members</a></li>
+                        <li><a href="/Admin/Messages" ><i class="fa fa-envelope"></i> Съобщения <span class="badge">@Html.Action("MessagesCount", "Messages")</span></a></li>
+                        <li><a href="/Admin/Members"><i class="fa fa-users"></i> Потребители</a></li>
                     }
                     <li><a href="/Profile"><span class="glyphicon glyphicon-user"></span> Профил</a></li>
                     <li><a href="/Manage/Index"  title="Manage"><span class="glyphicon glyphicon-cog"></span> Настройки</a></li>

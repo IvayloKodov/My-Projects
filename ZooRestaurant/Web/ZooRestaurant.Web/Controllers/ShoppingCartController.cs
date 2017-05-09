@@ -10,7 +10,7 @@
     using Models.ViewModels.ShoppingCart;
     using Services.Data.Contracts;
 
-    [MyAuthorize(Roles = "Customer")]
+    [MyAuthorize(Roles = "Admin, Customer")]
     public class ShoppingCartController : BaseController
     {
         private readonly IShoppingCartService shoppingCartService;
@@ -78,6 +78,7 @@
             {
                 return this.RedirectToAction("ViewCart");
             }
+
             return this.View(customerVm);
         }
 

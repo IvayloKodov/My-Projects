@@ -2,7 +2,6 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
     using System.Security.Claims;
     using System.Threading.Tasks;
     using AddressModels;
@@ -26,9 +25,7 @@
         [Required]
         [StringLength(ValidationConstants.MaxUserNameLength)]
         public string LastName { get; set; }
-
-        public int ImageId { get; set; }
-
+        
         public virtual Customer Customer { get; set; }
 
         public int DeliveryAddressId { get; set; }

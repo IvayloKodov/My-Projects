@@ -2,7 +2,9 @@
 {
     using System;
     using System.Linq;
+    using AutoMapper;
     using Contracts;
+    using Web.Infrastructure.Mapping;
     using ZooRestaurant.Data.Common.Repositories;
 
     public abstract class BaseService<T> : IBaseService<T> where T : class
@@ -52,5 +54,7 @@
         {
             this.Data.SaveChanges();
         }
+
+        public IMapper Mapper => AutoMapperConfig.Configuration.CreateMapper();
     }
 }

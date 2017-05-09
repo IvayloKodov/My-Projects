@@ -6,5 +6,7 @@
     public interface IMealsService : IBaseService<Meal>
     {
         IQueryable<Meal> MealsByCategory(string category);
+
+        IQueryable<MealCategory> Categories();
     }
 }

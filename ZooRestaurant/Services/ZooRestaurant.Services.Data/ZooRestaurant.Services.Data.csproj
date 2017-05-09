@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.0.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.6.0.2\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -91,12 +95,14 @@
     <Compile Include="Contracts\ICustomersService.cs" />
     <Compile Include="Contracts\IImagesService.cs" />
     <Compile Include="Contracts\IMealsService.cs" />
+    <Compile Include="Contracts\IProfileService.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
     <Compile Include="Contracts\IMessagesService.cs" />
     <Compile Include="Contracts\IShoppingCartService.cs" />
     <Compile Include="CustomersService.cs" />
     <Compile Include="ImagesService.cs" />
     <Compile Include="MealsService.cs" />
+    <Compile Include="ProfileService.cs" />
     <Compile Include="UsersService.cs" />
     <Compile Include="MessagesService.cs" />
     <Compile Include="ShoppingCartService.cs" />

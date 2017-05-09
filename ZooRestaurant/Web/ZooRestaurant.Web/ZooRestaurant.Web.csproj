@@ -323,7 +323,8 @@
     <Content Include="Areas\Admin\Views\Members\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Members\Index.cshtml" />
     <Content Include="Views\Profile\Profile.cshtml" />
-    <Content Include="Views\Profile\EditProfile.cshtml" />
+    <Content Include="Views\Profile\_EditPartialView.cshtml" />
+    <Content Include="Areas\Admin\Views\Messages\DisplayTemplates\Subject.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\Custom\ChangeTownNeigborhoods.js" />
     <Content Include="Scripts\Custom\ThumbnailHeightEquilzer.js" />
@@ -390,6 +391,8 @@
     <Content Include="Views\ShoppingCart\CartItems.cshtml" />
     <Content Include="Views\ShoppingCart\CheckOut.cshtml" />
     <Content Include="Views\ShoppingCart\SuccessfulOrder.cshtml" />
+    <Content Include="Views\Profile\_ProfilePartialView.cshtml" />
+    <Content Include="Views\Meals\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Data\ZooRestaurant.Data.Common\ZooRestaurant.Data.Common.csproj">

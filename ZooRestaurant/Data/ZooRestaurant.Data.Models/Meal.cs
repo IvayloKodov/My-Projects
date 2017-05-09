@@ -1,11 +1,13 @@
 ﻿namespace ZooRestaurant.Data.Models
 {
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using Web.Common.Constants;
 
     public class Meal
     {
         [Key]
+        [ForeignKey("Image")]
         public int Id { get; set; }
 
         [Required]

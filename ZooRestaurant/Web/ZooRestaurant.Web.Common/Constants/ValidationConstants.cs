@@ -21,5 +21,11 @@
 
         //User
         public const int MaxUserNameLength = 20;
+        public const int MaxNameLength = 20;
+        public const int MinNameLength = 2;
+        public const int UsernameMinLength = 4;
+        public const int UsernameMaxLength = 20;
+        public const int PasswordMaxLength = 20;
+        public const int PasswordMinLength = 6;
     }
 }
